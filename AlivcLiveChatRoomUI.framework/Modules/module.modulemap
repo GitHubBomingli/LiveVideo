@@ -1,0 +1,6 @@
+framework module AlivcLiveChatRoomUI {
+  umbrella header "AlivcLiveChatRoomUI.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,703 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		63B2D4EE1D9112ED00CA2339 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B2D4ED1D9112ED00CA2339 /* main.m */; };
+		63B2D4F11D9112ED00CA2339 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B2D4F01D9112ED00CA2339 /* AppDelegate.m */; };
+		63B2D4F41D9112ED00CA2339 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B2D4F31D9112ED00CA2339 /* ViewController.m */; };
+		63B2D4F71D9112ED00CA2339 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63B2D4F51D9112ED00CA2339 /* Main.storyboard */; };
+		63B2D4F91D9112ED00CA2339 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63B2D4F81D9112ED00CA2339 /* Assets.xcassets */; };
+		63B2D4FC1D9112ED00CA2339 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63B2D4FA1D9112ED00CA2339 /* LaunchScreen.storyboard */; };
+		63B2D5071D9112ED00CA2339 /* LiveVideoDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B2D5061D9112ED00CA2339 /* LiveVideoDemoTests.m */; };
+		63B2D5121D9112ED00CA2339 /* LiveVideoDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B2D5111D9112ED00CA2339 /* LiveVideoDemoUITests.m */; };
+		63B2D5241D91193F00CA2339 /* PlayCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B2D5231D91193F00CA2339 /* PlayCollectionViewController.m */; };
+		63B2D5271D91197200CA2339 /* MyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B2D5261D91197200CA2339 /* MyTableViewController.m */; };
+		63B2D52C1D9119F700CA2339 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B2D52B1D9119F700CA2339 /* BaseNavigationController.m */; };
+		63B2D52F1D911A3800CA2339 /* BaseTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B2D52E1D911A3800CA2339 /* BaseTabBarController.m */; };
+		63B2D5321D911AD200CA2339 /* PlayDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B2D5311D911AD200CA2339 /* PlayDetailViewController.m */; };
+		63B2D5361D911B2E00CA2339 /* PlayCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B2D5351D911B2E00CA2339 /* PlayCollectionViewCell.m */; };
+		63B2D53A1D91275E00CA2339 /* PlayAnchorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B2D5391D91275E00CA2339 /* PlayAnchorModel.m */; };
+		63B2D53E1D921B3C00CA2339 /* MyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B2D53D1D921B3C00CA2339 /* MyTableViewCell.m */; };
+		63B2D5401D921D3800CA2339 /* PlayDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63B2D53F1D921D3800CA2339 /* PlayDetailViewController.storyboard */; };
+		63B2D5441D9220CB00CA2339 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B2D5431D9220CB00CA2339 /* Reachability.m */; };
+		63B2D54A1D92252700CA2339 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B2D5491D92252700CA2339 /* SystemConfiguration.framework */; };
+		63B2D54D1D9229D700CA2339 /* AliVcMoiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B2D54B1D9229D700CA2339 /* AliVcMoiveViewController.m */; };
+		63B2D5711D9235C000CA2339 /* AliyunPlayerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B2D56C1D92358600CA2339 /* AliyunPlayerSDK.framework */; };
+		63B2D5721D9235C000CA2339 /* AliyunPlayerSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63B2D56C1D92358600CA2339 /* AliyunPlayerSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		63B2D5791D924E3700CA2339 /* AlivcLiveChatRoomUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B2D5771D924E3700CA2339 /* AlivcLiveChatRoomUI.framework */; };
+		63B2D57A1D924E3700CA2339 /* AlivcLiveVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B2D5781D924E3700CA2339 /* AlivcLiveVideo.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		63B2D5031D9112ED00CA2339 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63B2D4E11D9112EC00CA2339 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 63B2D4E81D9112EC00CA2339;
+			remoteInfo = LiveVideoDemo;
+		};
+		63B2D50E1D9112ED00CA2339 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63B2D4E11D9112EC00CA2339 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 63B2D4E81D9112EC00CA2339;
+			remoteInfo = LiveVideoDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		63B2D5731D9235C000CA2339 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				63B2D5721D9235C000CA2339 /* AliyunPlayerSDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		63B2D4E91D9112EC00CA2339 /* LiveVideoDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveVideoDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		63B2D4ED1D9112ED00CA2339 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		63B2D4EF1D9112ED00CA2339 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		63B2D4F01D9112ED00CA2339 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		63B2D4F21D9112ED00CA2339 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = ../ViewController.h; sourceTree = "<group>"; };
+		63B2D4F31D9112ED00CA2339 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = ../ViewController.m; sourceTree = "<group>"; };
+		63B2D4F61D9112ED00CA2339 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		63B2D4F81D9112ED00CA2339 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		63B2D4FB1D9112ED00CA2339 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		63B2D4FD1D9112ED00CA2339 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63B2D5021D9112ED00CA2339 /* LiveVideoDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LiveVideoDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		63B2D5061D9112ED00CA2339 /* LiveVideoDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LiveVideoDemoTests.m; sourceTree = "<group>"; };
+		63B2D5081D9112ED00CA2339 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63B2D50D1D9112ED00CA2339 /* LiveVideoDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LiveVideoDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		63B2D5111D9112ED00CA2339 /* LiveVideoDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LiveVideoDemoUITests.m; sourceTree = "<group>"; };
+		63B2D5131D9112ED00CA2339 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63B2D5221D91193F00CA2339 /* PlayCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayCollectionViewController.h; sourceTree = "<group>"; };
+		63B2D5231D91193F00CA2339 /* PlayCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayCollectionViewController.m; sourceTree = "<group>"; };
+		63B2D5251D91197200CA2339 /* MyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTableViewController.h; sourceTree = "<group>"; };
+		63B2D5261D91197200CA2339 /* MyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTableViewController.m; sourceTree = "<group>"; };
+		63B2D52A1D9119F700CA2339 /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
+		63B2D52B1D9119F700CA2339 /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
+		63B2D52D1D911A3800CA2339 /* BaseTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTabBarController.h; sourceTree = "<group>"; };
+		63B2D52E1D911A3800CA2339 /* BaseTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTabBarController.m; sourceTree = "<group>"; };
+		63B2D5301D911AD200CA2339 /* PlayDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayDetailViewController.h; sourceTree = "<group>"; };
+		63B2D5311D911AD200CA2339 /* PlayDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayDetailViewController.m; sourceTree = "<group>"; };
+		63B2D5341D911B2E00CA2339 /* PlayCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayCollectionViewCell.h; sourceTree = "<group>"; };
+		63B2D5351D911B2E00CA2339 /* PlayCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayCollectionViewCell.m; sourceTree = "<group>"; };
+		63B2D5381D91275E00CA2339 /* PlayAnchorModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayAnchorModel.h; sourceTree = "<group>"; };
+		63B2D5391D91275E00CA2339 /* PlayAnchorModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayAnchorModel.m; sourceTree = "<group>"; };
+		63B2D53C1D921B3C00CA2339 /* MyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTableViewCell.h; sourceTree = "<group>"; };
+		63B2D53D1D921B3C00CA2339 /* MyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTableViewCell.m; sourceTree = "<group>"; };
+		63B2D53F1D921D3800CA2339 /* PlayDetailViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PlayDetailViewController.storyboard; sourceTree = "<group>"; };
+		63B2D5421D9220CB00CA2339 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		63B2D5431D9220CB00CA2339 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		63B2D5491D92252700CA2339 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		63B2D54B1D9229D700CA2339 /* AliVcMoiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AliVcMoiveViewController.m; sourceTree = "<group>"; };
+		63B2D54C1D9229D700CA2339 /* AliVcMoiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AliVcMoiveViewController.h; sourceTree = "<group>"; };
+		63B2D56C1D92358600CA2339 /* AliyunPlayerSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AliyunPlayerSDK.framework; sourceTree = "<group>"; };
+		63B2D5771D924E3700CA2339 /* AlivcLiveChatRoomUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlivcLiveChatRoomUI.framework; sourceTree = "<group>"; };
+		63B2D5781D924E3700CA2339 /* AlivcLiveVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlivcLiveVideo.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		63B2D4E61D9112EC00CA2339 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63B2D5711D9235C000CA2339 /* AliyunPlayerSDK.framework in Frameworks */,
+				63B2D54A1D92252700CA2339 /* SystemConfiguration.framework in Frameworks */,
+				63B2D57A1D924E3700CA2339 /* AlivcLiveVideo.framework in Frameworks */,
+				63B2D5791D924E3700CA2339 /* AlivcLiveChatRoomUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63B2D4FF1D9112ED00CA2339 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63B2D50A1D9112ED00CA2339 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		63B2D4E01D9112EC00CA2339 = {
+			isa = PBXGroup;
+			children = (
+				63B2D5771D924E3700CA2339 /* AlivcLiveChatRoomUI.framework */,
+				63B2D5781D924E3700CA2339 /* AlivcLiveVideo.framework */,
+				63B2D56C1D92358600CA2339 /* AliyunPlayerSDK.framework */,
+				63B2D5491D92252700CA2339 /* SystemConfiguration.framework */,
+				63B2D4EB1D9112ED00CA2339 /* LiveVideoDemo */,
+				63B2D5051D9112ED00CA2339 /* LiveVideoDemoTests */,
+				63B2D5101D9112ED00CA2339 /* LiveVideoDemoUITests */,
+				63B2D4EA1D9112EC00CA2339 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		63B2D4EA1D9112EC00CA2339 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				63B2D4E91D9112EC00CA2339 /* LiveVideoDemo.app */,
+				63B2D5021D9112ED00CA2339 /* LiveVideoDemoTests.xctest */,
+				63B2D50D1D9112ED00CA2339 /* LiveVideoDemoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		63B2D4EB1D9112ED00CA2339 /* LiveVideoDemo */ = {
+			isa = PBXGroup;
+			children = (
+				63B2D5281D91199700CA2339 /* Helper */,
+				63B2D5211D9118DF00CA2339 /* My */,
+				63B2D5201D9118D600CA2339 /* Play */,
+				63B2D51F1D9118BF00CA2339 /* Live */,
+				63B2D4EF1D9112ED00CA2339 /* AppDelegate.h */,
+				63B2D4F01D9112ED00CA2339 /* AppDelegate.m */,
+				63B2D4F51D9112ED00CA2339 /* Main.storyboard */,
+				63B2D4F81D9112ED00CA2339 /* Assets.xcassets */,
+				63B2D4FA1D9112ED00CA2339 /* LaunchScreen.storyboard */,
+				63B2D4FD1D9112ED00CA2339 /* Info.plist */,
+				63B2D4EC1D9112ED00CA2339 /* Supporting Files */,
+			);
+			path = LiveVideoDemo;
+			sourceTree = "<group>";
+		};
+		63B2D4EC1D9112ED00CA2339 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				63B2D4ED1D9112ED00CA2339 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		63B2D5051D9112ED00CA2339 /* LiveVideoDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				63B2D5061D9112ED00CA2339 /* LiveVideoDemoTests.m */,
+				63B2D5081D9112ED00CA2339 /* Info.plist */,
+			);
+			path = LiveVideoDemoTests;
+			sourceTree = "<group>";
+		};
+		63B2D5101D9112ED00CA2339 /* LiveVideoDemoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				63B2D5111D9112ED00CA2339 /* LiveVideoDemoUITests.m */,
+				63B2D5131D9112ED00CA2339 /* Info.plist */,
+			);
+			path = LiveVideoDemoUITests;
+			sourceTree = "<group>";
+		};
+		63B2D51F1D9118BF00CA2339 /* Live */ = {
+			isa = PBXGroup;
+			children = (
+				63B2D4F21D9112ED00CA2339 /* ViewController.h */,
+				63B2D4F31D9112ED00CA2339 /* ViewController.m */,
+			);
+			path = Live;
+			sourceTree = "<group>";
+		};
+		63B2D5201D9118D600CA2339 /* Play */ = {
+			isa = PBXGroup;
+			children = (
+				63B2D5331D911AE800CA2339 /* views */,
+				63B2D5221D91193F00CA2339 /* PlayCollectionViewController.h */,
+				63B2D5231D91193F00CA2339 /* PlayCollectionViewController.m */,
+				63B2D54B1D9229D700CA2339 /* AliVcMoiveViewController.m */,
+				63B2D54C1D9229D700CA2339 /* AliVcMoiveViewController.h */,
+				63B2D5301D911AD200CA2339 /* PlayDetailViewController.h */,
+				63B2D5311D911AD200CA2339 /* PlayDetailViewController.m */,
+				63B2D53F1D921D3800CA2339 /* PlayDetailViewController.storyboard */,
+			);
+			path = Play;
+			sourceTree = "<group>";
+		};
+		63B2D5211D9118DF00CA2339 /* My */ = {
+			isa = PBXGroup;
+			children = (
+				63B2D53B1D921AF000CA2339 /* Views */,
+				63B2D5251D91197200CA2339 /* MyTableViewController.h */,
+				63B2D5261D91197200CA2339 /* MyTableViewController.m */,
+			);
+			path = My;
+			sourceTree = "<group>";
+		};
+		63B2D5281D91199700CA2339 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				63B2D5411D9220A900CA2339 /* Ali */,
+				63B2D5371D9126C300CA2339 /* Model */,
+				63B2D5291D9119B500CA2339 /* BaseControllers */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		63B2D5291D9119B500CA2339 /* BaseControllers */ = {
+			isa = PBXGroup;
+			children = (
+				63B2D52A1D9119F700CA2339 /* BaseNavigationController.h */,
+				63B2D52B1D9119F700CA2339 /* BaseNavigationController.m */,
+				63B2D52D1D911A3800CA2339 /* BaseTabBarController.h */,
+				63B2D52E1D911A3800CA2339 /* BaseTabBarController.m */,
+			);
+			path = BaseControllers;
+			sourceTree = "<group>";
+		};
+		63B2D5331D911AE800CA2339 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				63B2D5341D911B2E00CA2339 /* PlayCollectionViewCell.h */,
+				63B2D5351D911B2E00CA2339 /* PlayCollectionViewCell.m */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		63B2D5371D9126C300CA2339 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				63B2D5381D91275E00CA2339 /* PlayAnchorModel.h */,
+				63B2D5391D91275E00CA2339 /* PlayAnchorModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		63B2D53B1D921AF000CA2339 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				63B2D53C1D921B3C00CA2339 /* MyTableViewCell.h */,
+				63B2D53D1D921B3C00CA2339 /* MyTableViewCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		63B2D5411D9220A900CA2339 /* Ali */ = {
+			isa = PBXGroup;
+			children = (
+				63B2D5421D9220CB00CA2339 /* Reachability.h */,
+				63B2D5431D9220CB00CA2339 /* Reachability.m */,
+			);
+			path = Ali;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		63B2D4E81D9112EC00CA2339 /* LiveVideoDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63B2D5161D9112ED00CA2339 /* Build configuration list for PBXNativeTarget "LiveVideoDemo" */;
+			buildPhases = (
+				63B2D4E51D9112EC00CA2339 /* Sources */,
+				63B2D4E61D9112EC00CA2339 /* Frameworks */,
+				63B2D4E71D9112EC00CA2339 /* Resources */,
+				63B2D5731D9235C000CA2339 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LiveVideoDemo;
+			productName = LiveVideoDemo;
+			productReference = 63B2D4E91D9112EC00CA2339 /* LiveVideoDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		63B2D5011D9112ED00CA2339 /* LiveVideoDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63B2D5191D9112ED00CA2339 /* Build configuration list for PBXNativeTarget "LiveVideoDemoTests" */;
+			buildPhases = (
+				63B2D4FE1D9112ED00CA2339 /* Sources */,
+				63B2D4FF1D9112ED00CA2339 /* Frameworks */,
+				63B2D5001D9112ED00CA2339 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				63B2D5041D9112ED00CA2339 /* PBXTargetDependency */,
+			);
+			name = LiveVideoDemoTests;
+			productName = LiveVideoDemoTests;
+			productReference = 63B2D5021D9112ED00CA2339 /* LiveVideoDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		63B2D50C1D9112ED00CA2339 /* LiveVideoDemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63B2D51C1D9112ED00CA2339 /* Build configuration list for PBXNativeTarget "LiveVideoDemoUITests" */;
+			buildPhases = (
+				63B2D5091D9112ED00CA2339 /* Sources */,
+				63B2D50A1D9112ED00CA2339 /* Frameworks */,
+				63B2D50B1D9112ED00CA2339 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				63B2D50F1D9112ED00CA2339 /* PBXTargetDependency */,
+			);
+			name = LiveVideoDemoUITests;
+			productName = LiveVideoDemoUITests;
+			productReference = 63B2D50D1D9112ED00CA2339 /* LiveVideoDemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		63B2D4E11D9112EC00CA2339 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = bomingli;
+				TargetAttributes = {
+					63B2D4E81D9112EC00CA2339 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					63B2D5011D9112ED00CA2339 = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = 63B2D4E81D9112EC00CA2339;
+					};
+					63B2D50C1D9112ED00CA2339 = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = 63B2D4E81D9112EC00CA2339;
+					};
+				};
+			};
+			buildConfigurationList = 63B2D4E41D9112EC00CA2339 /* Build configuration list for PBXProject "LiveVideoDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 63B2D4E01D9112EC00CA2339;
+			productRefGroup = 63B2D4EA1D9112EC00CA2339 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				63B2D4E81D9112EC00CA2339 /* LiveVideoDemo */,
+				63B2D5011D9112ED00CA2339 /* LiveVideoDemoTests */,
+				63B2D50C1D9112ED00CA2339 /* LiveVideoDemoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		63B2D4E71D9112EC00CA2339 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63B2D4FC1D9112ED00CA2339 /* LaunchScreen.storyboard in Resources */,
+				63B2D4F91D9112ED00CA2339 /* Assets.xcassets in Resources */,
+				63B2D5401D921D3800CA2339 /* PlayDetailViewController.storyboard in Resources */,
+				63B2D4F71D9112ED00CA2339 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63B2D5001D9112ED00CA2339 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63B2D50B1D9112ED00CA2339 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		63B2D4E51D9112EC00CA2339 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63B2D53E1D921B3C00CA2339 /* MyTableViewCell.m in Sources */,
+				63B2D4F41D9112ED00CA2339 /* ViewController.m in Sources */,
+				63B2D52F1D911A3800CA2339 /* BaseTabBarController.m in Sources */,
+				63B2D5271D91197200CA2339 /* MyTableViewController.m in Sources */,
+				63B2D52C1D9119F700CA2339 /* BaseNavigationController.m in Sources */,
+				63B2D5361D911B2E00CA2339 /* PlayCollectionViewCell.m in Sources */,
+				63B2D4F11D9112ED00CA2339 /* AppDelegate.m in Sources */,
+				63B2D5321D911AD200CA2339 /* PlayDetailViewController.m in Sources */,
+				63B2D5241D91193F00CA2339 /* PlayCollectionViewController.m in Sources */,
+				63B2D53A1D91275E00CA2339 /* PlayAnchorModel.m in Sources */,
+				63B2D54D1D9229D700CA2339 /* AliVcMoiveViewController.m in Sources */,
+				63B2D5441D9220CB00CA2339 /* Reachability.m in Sources */,
+				63B2D4EE1D9112ED00CA2339 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63B2D4FE1D9112ED00CA2339 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63B2D5071D9112ED00CA2339 /* LiveVideoDemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63B2D5091D9112ED00CA2339 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63B2D5121D9112ED00CA2339 /* LiveVideoDemoUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		63B2D5041D9112ED00CA2339 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 63B2D4E81D9112EC00CA2339 /* LiveVideoDemo */;
+			targetProxy = 63B2D5031D9112ED00CA2339 /* PBXContainerItemProxy */;
+		};
+		63B2D50F1D9112ED00CA2339 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 63B2D4E81D9112EC00CA2339 /* LiveVideoDemo */;
+			targetProxy = 63B2D50E1D9112ED00CA2339 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		63B2D4F51D9112ED00CA2339 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				63B2D4F61D9112ED00CA2339 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		63B2D4FA1D9112ED00CA2339 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				63B2D4FB1D9112ED00CA2339 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		63B2D5141D9112ED00CA2339 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		63B2D5151D9112ED00CA2339 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		63B2D5171D9112ED00CA2339 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/LiveVideoDemo",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = LiveVideoDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = bomingli.LiveVideoDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		63B2D5181D9112ED00CA2339 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/LiveVideoDemo",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = LiveVideoDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = bomingli.LiveVideoDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		63B2D51A1D9112ED00CA2339 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = LiveVideoDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = bomingli.LiveVideoDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LiveVideoDemo.app/LiveVideoDemo";
+			};
+			name = Debug;
+		};
+		63B2D51B1D9112ED00CA2339 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = LiveVideoDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = bomingli.LiveVideoDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LiveVideoDemo.app/LiveVideoDemo";
+			};
+			name = Release;
+		};
+		63B2D51D1D9112ED00CA2339 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = LiveVideoDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = bomingli.LiveVideoDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = LiveVideoDemo;
+			};
+			name = Debug;
+		};
+		63B2D51E1D9112ED00CA2339 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = LiveVideoDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = bomingli.LiveVideoDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = LiveVideoDemo;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		63B2D4E41D9112EC00CA2339 /* Build configuration list for PBXProject "LiveVideoDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63B2D5141D9112ED00CA2339 /* Debug */,
+				63B2D5151D9112ED00CA2339 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		63B2D5161D9112ED00CA2339 /* Build configuration list for PBXNativeTarget "LiveVideoDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63B2D5171D9112ED00CA2339 /* Debug */,
+				63B2D5181D9112ED00CA2339 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		63B2D5191D9112ED00CA2339 /* Build configuration list for PBXNativeTarget "LiveVideoDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63B2D51A1D9112ED00CA2339 /* Debug */,
+				63B2D51B1D9112ED00CA2339 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		63B2D51C1D9112ED00CA2339 /* Build configuration list for PBXNativeTarget "LiveVideoDemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63B2D51D1D9112ED00CA2339 /* Debug */,
+				63B2D51E1D9112ED00CA2339 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 63B2D4E11D9112EC00CA2339 /* Project object */;
+}
