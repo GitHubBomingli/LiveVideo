@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		637DF13F1D98B56300C1A21C /* AnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 637DF13E1D98B56300C1A21C /* AnimationView.m */; };
+		637DF1411D98B5F000C1A21C /* AnimationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 637DF1401D98B5F000C1A21C /* AnimationView.xib */; };
+		637DF1441D98B62B00C1A21C /* AnimationHeaderScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 637DF1431D98B62B00C1A21C /* AnimationHeaderScrollView.m */; };
+		637DF1471D98B65100C1A21C /* AnimationHeaderIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 637DF1461D98B65100C1A21C /* AnimationHeaderIconView.m */; };
+		637DF14B1D98B69500C1A21C /* AnimationHeaderIconView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 637DF14A1D98B69500C1A21C /* AnimationHeaderIconView.xib */; };
+		637DF14D1D98F69C00C1A21C /* NHGiftAnimtionSDK in Resources */ = {isa = PBXBuildFile; fileRef = 637DF14C1D98F69C00C1A21C /* NHGiftAnimtionSDK */; };
+		637DF1501D98F9A800C1A21C /* AnimationGiftListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 637DF14F1D98F9A800C1A21C /* AnimationGiftListView.m */; };
+		637DF1521D98F9B500C1A21C /* AnimationGiftListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 637DF1511D98F9B500C1A21C /* AnimationGiftListView.xib */; };
+		637DF1551D98FDDD00C1A21C /* AnimationGiftIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 637DF1541D98FDDD00C1A21C /* AnimationGiftIconView.m */; };
+		637DF1571D98FDF000C1A21C /* AnimationGiftIconView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 637DF1561D98FDF000C1A21C /* AnimationGiftIconView.xib */; };
 		63B2D4EE1D9112ED00CA2339 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B2D4ED1D9112ED00CA2339 /* main.m */; };
 		63B2D4F11D9112ED00CA2339 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B2D4F01D9112ED00CA2339 /* AppDelegate.m */; };
 		63B2D4F41D9112ED00CA2339 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B2D4F31D9112ED00CA2339 /* ViewController.m */; };
@@ -65,6 +75,21 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		637DF13D1D98B56300C1A21C /* AnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationView.h; sourceTree = "<group>"; };
+		637DF13E1D98B56300C1A21C /* AnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationView.m; sourceTree = "<group>"; };
+		637DF1401D98B5F000C1A21C /* AnimationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnimationView.xib; sourceTree = "<group>"; };
+		637DF1421D98B62B00C1A21C /* AnimationHeaderScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationHeaderScrollView.h; sourceTree = "<group>"; };
+		637DF1431D98B62B00C1A21C /* AnimationHeaderScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationHeaderScrollView.m; sourceTree = "<group>"; };
+		637DF1451D98B65100C1A21C /* AnimationHeaderIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationHeaderIconView.h; sourceTree = "<group>"; };
+		637DF1461D98B65100C1A21C /* AnimationHeaderIconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationHeaderIconView.m; sourceTree = "<group>"; };
+		637DF14A1D98B69500C1A21C /* AnimationHeaderIconView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnimationHeaderIconView.xib; sourceTree = "<group>"; };
+		637DF14C1D98F69C00C1A21C /* NHGiftAnimtionSDK */ = {isa = PBXFileReference; lastKnownFileType = folder; path = NHGiftAnimtionSDK; sourceTree = "<group>"; };
+		637DF14E1D98F9A800C1A21C /* AnimationGiftListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationGiftListView.h; sourceTree = "<group>"; };
+		637DF14F1D98F9A800C1A21C /* AnimationGiftListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationGiftListView.m; sourceTree = "<group>"; };
+		637DF1511D98F9B500C1A21C /* AnimationGiftListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnimationGiftListView.xib; sourceTree = "<group>"; };
+		637DF1531D98FDDD00C1A21C /* AnimationGiftIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationGiftIconView.h; sourceTree = "<group>"; };
+		637DF1541D98FDDD00C1A21C /* AnimationGiftIconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationGiftIconView.m; sourceTree = "<group>"; };
+		637DF1561D98FDF000C1A21C /* AnimationGiftIconView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnimationGiftIconView.xib; sourceTree = "<group>"; };
 		63B2D4E91D9112EC00CA2339 /* LiveVideoDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveVideoDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63B2D4ED1D9112ED00CA2339 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		63B2D4EF1D9112ED00CA2339 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -137,6 +162,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		637DF13C1D98B4C200C1A21C /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				637DF14C1D98F69C00C1A21C /* NHGiftAnimtionSDK */,
+				637DF13D1D98B56300C1A21C /* AnimationView.h */,
+				637DF13E1D98B56300C1A21C /* AnimationView.m */,
+				637DF1401D98B5F000C1A21C /* AnimationView.xib */,
+				637DF14E1D98F9A800C1A21C /* AnimationGiftListView.h */,
+				637DF14F1D98F9A800C1A21C /* AnimationGiftListView.m */,
+				637DF1511D98F9B500C1A21C /* AnimationGiftListView.xib */,
+				637DF1531D98FDDD00C1A21C /* AnimationGiftIconView.h */,
+				637DF1541D98FDDD00C1A21C /* AnimationGiftIconView.m */,
+				637DF1561D98FDF000C1A21C /* AnimationGiftIconView.xib */,
+				637DF1421D98B62B00C1A21C /* AnimationHeaderScrollView.h */,
+				637DF1431D98B62B00C1A21C /* AnimationHeaderScrollView.m */,
+				637DF1451D98B65100C1A21C /* AnimationHeaderIconView.h */,
+				637DF1461D98B65100C1A21C /* AnimationHeaderIconView.m */,
+				637DF14A1D98B69500C1A21C /* AnimationHeaderIconView.xib */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
 		63B2D4E01D9112EC00CA2339 = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +211,7 @@
 		63B2D4EB1D9112ED00CA2339 /* LiveVideoDemo */ = {
 			isa = PBXGroup;
 			children = (
+				637DF13C1D98B4C200C1A21C /* Animation */,
 				63B2D5281D91199700CA2339 /* Helper */,
 				63B2D5211D9118DF00CA2339 /* My */,
 				63B2D5201D9118D600CA2339 /* Play */,
@@ -401,9 +449,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				63B2D4FC1D9112ED00CA2339 /* LaunchScreen.storyboard in Resources */,
+				637DF1571D98FDF000C1A21C /* AnimationGiftIconView.xib in Resources */,
 				63B2D4F91D9112ED00CA2339 /* Assets.xcassets in Resources */,
 				63B2D5401D921D3800CA2339 /* PlayDetailViewController.storyboard in Resources */,
+				637DF1521D98F9B500C1A21C /* AnimationGiftListView.xib in Resources */,
+				637DF1411D98B5F000C1A21C /* AnimationView.xib in Resources */,
 				63B2D4F71D9112ED00CA2339 /* Main.storyboard in Resources */,
+				637DF14D1D98F69C00C1A21C /* NHGiftAnimtionSDK in Resources */,
+				637DF14B1D98B69500C1A21C /* AnimationHeaderIconView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,6 +482,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				63B2D53E1D921B3C00CA2339 /* MyTableViewCell.m in Sources */,
+				637DF1471D98B65100C1A21C /* AnimationHeaderIconView.m in Sources */,
+				637DF13F1D98B56300C1A21C /* AnimationView.m in Sources */,
 				63B2D4F41D9112ED00CA2339 /* ViewController.m in Sources */,
 				63B2D52F1D911A3800CA2339 /* BaseTabBarController.m in Sources */,
 				63B2D5271D91197200CA2339 /* MyTableViewController.m in Sources */,
@@ -437,10 +492,13 @@
 				63B2D4F11D9112ED00CA2339 /* AppDelegate.m in Sources */,
 				63B2D5321D911AD200CA2339 /* PlayDetailViewController.m in Sources */,
 				63B2D5241D91193F00CA2339 /* PlayCollectionViewController.m in Sources */,
+				637DF1441D98B62B00C1A21C /* AnimationHeaderScrollView.m in Sources */,
 				63B2D53A1D91275E00CA2339 /* PlayAnchorModel.m in Sources */,
 				63B2D54D1D9229D700CA2339 /* AliVcMoiveViewController.m in Sources */,
+				637DF1551D98FDDD00C1A21C /* AnimationGiftIconView.m in Sources */,
 				63B2D5441D9220CB00CA2339 /* Reachability.m in Sources */,
 				63B2D4EE1D9112ED00CA2339 /* main.m in Sources */,
+				637DF1501D98F9A800C1A21C /* AnimationGiftListView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -680,6 +738,7 @@
 				63B2D5181D9112ED00CA2339 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		63B2D5191D9112ED00CA2339 /* Build configuration list for PBXNativeTarget "LiveVideoDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -688,6 +747,7 @@
 				63B2D51B1D9112ED00CA2339 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		63B2D51C1D9112ED00CA2339 /* Build configuration list for PBXNativeTarget "LiveVideoDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -696,6 +756,7 @@
 				63B2D51E1D9112ED00CA2339 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

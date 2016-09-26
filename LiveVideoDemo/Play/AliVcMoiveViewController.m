@@ -15,6 +15,8 @@
 #import <AVFoundation/AVAudioSession.h>
 #import "Reachability.h"
 
+#import "AnimationView.h"
+
 typedef NS_ENUM(NSInteger, GestureType){
     GestureTypeOfNone = 0,
     GestureTypeOfVolume,
@@ -66,6 +68,13 @@ static const CGFloat iPhoneScreenPortraitWidth = 320.f;
 @property (nonatomic,strong)UILabel *progressTimeLable;
 @property (nonatomic,assign)CGFloat progressValue;
 
+/**
+ *  聊天、动画等视图
+ */
+@property (nonatomic, strong) AnimationView *animationView;
+
+@property (nonatomic, strong) UIButton *backBtn;
+
 @end
 
 @implementation TBMoiveViewController
@@ -97,7 +106,7 @@ static const CGFloat iPhoneScreenPortraitWidth = 320.f;
     [[UIApplication sharedApplication] setIdleTimerDisabled: YES];
     
     self.view.backgroundColor = [UIColor blackColor];
-    barHeight = 70.f;
+    barHeight = 0.f;
     barColor = [UIColor colorWithRed:0.000 green:0.892 blue:1.000 alpha:1.000];
     fadeDelay = 5.0f;
     timeRemainingDecrements = YES;
@@ -118,6 +127,63 @@ static const CGFloat iPhoneScreenPortraitWidth = 320.f;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkStateChange) name:kReachabilityChangedNotification object:nil];
     self.conn = [Reachability reachabilityForInternetConnection];
     [self.conn startNotifier];
+    
+    
+    [self.view addSubview:self.backBtn];
+    
+    [self.view addSubview:self.animationView];
+    
+    UISwipeGestureRecognizer *leftSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(leftSwipe:)];
+    leftSwipe.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:leftSwipe];
+}
+
+- (AnimationView *)animationView {
+    if (_animationView == nil) {
+
+        _animationView = [[AnimationView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
+        _animationView.backgroundColor = [UIColor clearColor];
+        [_animationView.backBtn addTarget:self action:@selector(DonePressed:) forControlEvents:UIControlEventTouchUpInside];
+        
+        UISwipeGestureRecognizer *rightSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(rightSwipe:)];
+        rightSwipe.direction = UISwipeGestureRecognizerDirectionRight;
+        [_animationView addGestureRecognizer:rightSwipe];
+    }
+    return _animationView;
+}
+
+- (UIButton *)backBtn {
+    if (_backBtn == nil) {
+        _backBtn = [[UIButton alloc] init];
+        _backBtn.frame = CGRectMake([UIScreen mainScreen].bounds.size.width - 38, [UIScreen mainScreen].bounds.size.height - 38, 30, 30);
+        [_backBtn setTitle:@"╳" forState:UIControlStateNormal];
+        [_backBtn setTitleShadowColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [_backBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        _backBtn.backgroundColor = [[UIColor darkGrayColor] colorWithAlphaComponent:0.6];
+        _backBtn.titleLabel.shadowOffset = CGSizeMake(1.f, 1.f);
+        [_backBtn.titleLabel setFont:[UIFont systemFontOfSize:15.f]];
+        _backBtn.layer.cornerRadius = 15;
+        _backBtn.layer.masksToBounds = YES;
+        [_backBtn addTarget:self action:@selector(DonePressed:) forControlEvents:UIControlEventTouchUpInside];
+        _backBtn.hidden = YES;
+    }
+    return _backBtn;
+}
+
+- (void)rightSwipe:(UISwipeGestureRecognizer *)sender {
+    [UIView animateWithDuration:0.4 animations:^{
+        self.animationView.frame = CGRectMake([UIScreen mainScreen].bounds.size.width, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+    } completion:^(BOOL finished) {
+        self.backBtn.hidden = NO;
+    }];
+}
+
+- (void)leftSwipe:(UISwipeGestureRecognizer *)sender {
+    [UIView animateWithDuration:0.4 animations:^{
+        self.animationView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+    } completion:^(BOOL finished) {
+        self.backBtn.hidden = YES;
+    }];
 }
 
 - (void)networkStateChange
@@ -1035,80 +1101,80 @@ static const CGFloat iPhoneScreenPortraitWidth = 320.f;
     _brightnessProgress.progress = [UIScreen mainScreen].brightness;
 }
 
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
-    
-    UITouch *touch = [touches anyObject];
-    CGPoint currentLocation = [touch locationInView:self.view];
-    CGFloat offset_x = currentLocation.x - _originalLocation.x;
-    CGFloat offset_y = currentLocation.y - _originalLocation.y;
-    if (CGPointEqualToPoint(_originalLocation,CGPointZero)) {
-        _originalLocation = currentLocation;
-        return;
-    }
-    _originalLocation = currentLocation;
-    
-    CGFloat width = self.view.frame.size.width;
-    CGFloat height = self.view.frame.size.height;
-    
-    UIDeviceOrientation orientation = [[UIDevice currentDevice]orientation];
-    float iosVersion = [self iOSVersion];
-    if(iosVersion < 8.0) {
-        if(UIDeviceOrientationIsLandscape(orientation) || orientation == UIDeviceOrientationUnknown ||
-           orientation == UIDeviceOrientationFaceUp || orientation == UIDeviceOrientationFaceDown) {
-            //landscape assume  width > height
-            if(width<height) {
-                CGFloat temp = width;
-                width = height;
-                height = temp;
-            }
-        }
-    }
-    
-    if (_gestureType == GestureTypeOfNone) {
-        if ((currentLocation.x > width*0.8) && (ABS(offset_x) <= ABS(offset_y))) {
-            _gestureType = GestureTypeOfVolume;
-//            [volumeView removeFromSuperview];
-        }else if ((currentLocation.x < width*0.2) && (ABS(offset_x) <= ABS(offset_y))) {
-            _gestureType = GestureTypeOfBrightness;
-        }else if ((ABS(offset_x) > ABS(offset_y))) {
-            _gestureType = GestureTypeOfProgress;
-            _progressTimeView.hidden = NO;
-        }
-    }
-    if ((_gestureType == GestureTypeOfProgress) && (ABS(offset_x) > ABS(offset_y))) {
-        if (offset_x > 0) {
-            //NSLog(@"横向向右");
-            _progressValue += 1;
-            _prgBackwardView.hidden = YES;
-            _prgForwardView.hidden = NO;
-        }else{
-            //NSLog(@"横向向左");
-            _progressValue -= 1;
-            _prgBackwardView.hidden = NO;
-            _prgForwardView.hidden = YES;
-        }
-        _progressTimeLable.text = [NSString stringWithFormat:@"[%@ %ds]",_progressValue < 0? @"":@"+",(int)_progressValue];
-        
-    }else if ((_gestureType == GestureTypeOfVolume) && (currentLocation.x > width*0.8) && (ABS(offset_x) <= ABS(offset_y))){
-        if (offset_y > 0){
-            //NSLog(@"右竖向向下");
-            [self volumeAdd:-VolumeStep];
-        }else{
-            //NSLog(@"右竖向向上");
-            [self volumeAdd:VolumeStep];
-        }
-    }else if ((_gestureType == GestureTypeOfBrightness) && (currentLocation.x < width*0.2) && (ABS(offset_x) <= ABS(offset_y))){
-        if (offset_y > 0) {
-            //NSLog(@"左竖向向下");
-            _brightnessView.alpha = 1;
-            [self brightnessAdd:-BrightnessStep];
-        }else{
-            //NSLog(@"左竖向向下");
-            _brightnessView.alpha = 1;
-            [self brightnessAdd:BrightnessStep];
-        }
-    }
-}
+//- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
+//    [super touchesMoved:touches withEvent:event];
+////    UITouch *touch = [touches anyObject];
+////    CGPoint currentLocation = [touch locationInView:self.view];
+////    CGFloat offset_x = currentLocation.x - _originalLocation.x;
+////    CGFloat offset_y = currentLocation.y - _originalLocation.y;
+////    if (CGPointEqualToPoint(_originalLocation,CGPointZero)) {
+////        _originalLocation = currentLocation;
+////        return;
+////    }
+////    _originalLocation = currentLocation;
+////    
+////    CGFloat width = self.view.frame.size.width;
+////    CGFloat height = self.view.frame.size.height;
+////    
+////    UIDeviceOrientation orientation = [[UIDevice currentDevice]orientation];
+////    float iosVersion = [self iOSVersion];
+////    if(iosVersion < 8.0) {
+////        if(UIDeviceOrientationIsLandscape(orientation) || orientation == UIDeviceOrientationUnknown ||
+////           orientation == UIDeviceOrientationFaceUp || orientation == UIDeviceOrientationFaceDown) {
+////            //landscape assume  width > height
+////            if(width<height) {
+////                CGFloat temp = width;
+////                width = height;
+////                height = temp;
+////            }
+////        }
+////    }
+////    
+////    if (_gestureType == GestureTypeOfNone) {
+////        if ((currentLocation.x > width*0.8) && (ABS(offset_x) <= ABS(offset_y))) {
+////            _gestureType = GestureTypeOfVolume;
+//////            [volumeView removeFromSuperview];
+////        }else if ((currentLocation.x < width*0.2) && (ABS(offset_x) <= ABS(offset_y))) {
+////            _gestureType = GestureTypeOfBrightness;
+////        }else if ((ABS(offset_x) > ABS(offset_y))) {
+////            _gestureType = GestureTypeOfProgress;
+////            _progressTimeView.hidden = NO;
+////        }
+////    }
+////    if ((_gestureType == GestureTypeOfProgress) && (ABS(offset_x) > ABS(offset_y))) {
+////        if (offset_x > 0) {
+////            //NSLog(@"横向向右");
+////            _progressValue += 1;
+////            _prgBackwardView.hidden = YES;
+////            _prgForwardView.hidden = NO;
+////        }else{
+////            //NSLog(@"横向向左");
+////            _progressValue -= 1;
+////            _prgBackwardView.hidden = NO;
+////            _prgForwardView.hidden = YES;
+////        }
+////        _progressTimeLable.text = [NSString stringWithFormat:@"[%@ %ds]",_progressValue < 0? @"":@"+",(int)_progressValue];
+////        
+////    }else if ((_gestureType == GestureTypeOfVolume) && (currentLocation.x > width*0.8) && (ABS(offset_x) <= ABS(offset_y))){
+////        if (offset_y > 0){
+////            //NSLog(@"右竖向向下");
+////            [self volumeAdd:-VolumeStep];
+////        }else{
+////            //NSLog(@"右竖向向上");
+////            [self volumeAdd:VolumeStep];
+////        }
+////    }else if ((_gestureType == GestureTypeOfBrightness) && (currentLocation.x < width*0.2) && (ABS(offset_x) <= ABS(offset_y))){
+////        if (offset_y > 0) {
+////            //NSLog(@"左竖向向下");
+////            _brightnessView.alpha = 1;
+////            [self brightnessAdd:-BrightnessStep];
+////        }else{
+////            //NSLog(@"左竖向向下");
+////            _brightnessView.alpha = 1;
+////            [self brightnessAdd:BrightnessStep];
+////        }
+////    }
+//}
 
 
 - (void)viewDidDisappear:(BOOL)animated

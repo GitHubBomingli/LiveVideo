@@ -188,7 +188,7 @@ NSString* accessKeySecret = @"hipHJKpt0TdznQG2J4D0EVSavRH7mR";
         for (NSInteger i = 0; i != 10; i ++) {
             PlayAnchorModel *anchorModel = [[PlayAnchorModel alloc] init];
             anchorModel.anchorName = [NSString stringWithFormat:@"面朝大海，春暖花开%ld",i];
-            anchorModel.anchorIcon = [NSString stringWithFormat:@"%ld",i % 4];
+            anchorModel.anchorIcon = [NSString stringWithFormat:@"icon%ld",i % 4];
             anchorModel.anchorAddress = @"长春市南三环与幸福街交汇";
             anchorModel.anchorViewNum = [NSString stringWithFormat:@"%ld",19665 - i * 76];
             anchorModel.abchorID = [NSString stringWithFormat:@"%ld",i];
