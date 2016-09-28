@@ -7,12 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		635C3A671D9B8E4D008459A9 /* NHCarView.nib in Resources */ = {isa = PBXBuildFile; fileRef = 635C3A521D9B8E4D008459A9 /* NHCarView.nib */; };
+		635C3A681D9B8E4D008459A9 /* NHFighterView.nib in Resources */ = {isa = PBXBuildFile; fileRef = 635C3A531D9B8E4D008459A9 /* NHFighterView.nib */; };
+		635C3A691D9B8E4D008459A9 /* NHPlaneView.nib in Resources */ = {isa = PBXBuildFile; fileRef = 635C3A541D9B8E4D008459A9 /* NHPlaneView.nib */; };
+		635C3A6A1D9B8E4D008459A9 /* NHCarView.nib in Resources */ = {isa = PBXBuildFile; fileRef = 635C3A561D9B8E4D008459A9 /* NHCarView.nib */; };
+		635C3A6B1D9B8E4D008459A9 /* NHFighterView.nib in Resources */ = {isa = PBXBuildFile; fileRef = 635C3A571D9B8E4D008459A9 /* NHFighterView.nib */; };
+		635C3A6C1D9B8E4D008459A9 /* NHPlaneView.nib in Resources */ = {isa = PBXBuildFile; fileRef = 635C3A581D9B8E4D008459A9 /* NHPlaneView.nib */; };
+		635C3A6D1D9B8E4D008459A9 /* NHCarViews.m in Sources */ = {isa = PBXBuildFile; fileRef = 635C3A601D9B8E4D008459A9 /* NHCarViews.m */; };
+		635C3A6E1D9B8E4D008459A9 /* NHCarViews.xib in Resources */ = {isa = PBXBuildFile; fileRef = 635C3A611D9B8E4D008459A9 /* NHCarViews.xib */; };
+		635C3A6F1D9B8E4D008459A9 /* NHGiftAnimtionSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 635C3A621D9B8E4D008459A9 /* NHGiftAnimtionSDK.a */; };
+		635C3A701D9B8E4D008459A9 /* NHPlaneViews.m in Sources */ = {isa = PBXBuildFile; fileRef = 635C3A641D9B8E4D008459A9 /* NHPlaneViews.m */; };
+		635C3A711D9B8E4D008459A9 /* NHPlaneViews.xib in Resources */ = {isa = PBXBuildFile; fileRef = 635C3A651D9B8E4D008459A9 /* NHPlaneViews.xib */; };
+		635C3A721D9B8E4D008459A9 /* resource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 635C3A661D9B8E4D008459A9 /* resource.bundle */; };
+		635C3A7A1D9B97B0008459A9 /* BMeteorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 635C3A791D9B97B0008459A9 /* BMeteorView.m */; };
+		635C3A7C1D9B97C5008459A9 /* BMeteorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 635C3A7B1D9B97C5008459A9 /* BMeteorView.xib */; };
+		635C3A7F1D9B9F50008459A9 /* BFirework.m in Sources */ = {isa = PBXBuildFile; fileRef = 635C3A7E1D9B9F50008459A9 /* BFirework.m */; };
+		635C3A811D9B9F5D008459A9 /* BFirework.xib in Resources */ = {isa = PBXBuildFile; fileRef = 635C3A801D9B9F5D008459A9 /* BFirework.xib */; };
 		637DF13F1D98B56300C1A21C /* AnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 637DF13E1D98B56300C1A21C /* AnimationView.m */; };
 		637DF1411D98B5F000C1A21C /* AnimationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 637DF1401D98B5F000C1A21C /* AnimationView.xib */; };
 		637DF1441D98B62B00C1A21C /* AnimationHeaderScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 637DF1431D98B62B00C1A21C /* AnimationHeaderScrollView.m */; };
 		637DF1471D98B65100C1A21C /* AnimationHeaderIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 637DF1461D98B65100C1A21C /* AnimationHeaderIconView.m */; };
 		637DF14B1D98B69500C1A21C /* AnimationHeaderIconView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 637DF14A1D98B69500C1A21C /* AnimationHeaderIconView.xib */; };
-		637DF14D1D98F69C00C1A21C /* NHGiftAnimtionSDK in Resources */ = {isa = PBXBuildFile; fileRef = 637DF14C1D98F69C00C1A21C /* NHGiftAnimtionSDK */; };
 		637DF1501D98F9A800C1A21C /* AnimationGiftListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 637DF14F1D98F9A800C1A21C /* AnimationGiftListView.m */; };
 		637DF1521D98F9B500C1A21C /* AnimationGiftListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 637DF1511D98F9B500C1A21C /* AnimationGiftListView.xib */; };
 		637DF1551D98FDDD00C1A21C /* AnimationGiftIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 637DF1541D98FDDD00C1A21C /* AnimationGiftIconView.m */; };
@@ -29,7 +44,7 @@
 		63B2D5271D91197200CA2339 /* MyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B2D5261D91197200CA2339 /* MyTableViewController.m */; };
 		63B2D52C1D9119F700CA2339 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B2D52B1D9119F700CA2339 /* BaseNavigationController.m */; };
 		63B2D52F1D911A3800CA2339 /* BaseTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B2D52E1D911A3800CA2339 /* BaseTabBarController.m */; };
-		63B2D5321D911AD200CA2339 /* PlayDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B2D5311D911AD200CA2339 /* PlayDetailViewController.m */; };
+		63B2D5321D911AD200CA2339 /* PlayDetailViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 63B2D5311D911AD200CA2339 /* PlayDetailViewController.mm */; };
 		63B2D5361D911B2E00CA2339 /* PlayCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B2D5351D911B2E00CA2339 /* PlayCollectionViewCell.m */; };
 		63B2D53A1D91275E00CA2339 /* PlayAnchorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B2D5391D91275E00CA2339 /* PlayAnchorModel.m */; };
 		63B2D53E1D921B3C00CA2339 /* MyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B2D53D1D921B3C00CA2339 /* MyTableViewCell.m */; };
@@ -75,6 +90,31 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		635C3A521D9B8E4D008459A9 /* NHCarView.nib */ = {isa = PBXFileReference; lastKnownFileType = file; path = NHCarView.nib; sourceTree = "<group>"; };
+		635C3A531D9B8E4D008459A9 /* NHFighterView.nib */ = {isa = PBXFileReference; lastKnownFileType = file; path = NHFighterView.nib; sourceTree = "<group>"; };
+		635C3A541D9B8E4D008459A9 /* NHPlaneView.nib */ = {isa = PBXFileReference; lastKnownFileType = file; path = NHPlaneView.nib; sourceTree = "<group>"; };
+		635C3A561D9B8E4D008459A9 /* NHCarView.nib */ = {isa = PBXFileReference; lastKnownFileType = file; path = NHCarView.nib; sourceTree = "<group>"; };
+		635C3A571D9B8E4D008459A9 /* NHFighterView.nib */ = {isa = PBXFileReference; lastKnownFileType = file; path = NHFighterView.nib; sourceTree = "<group>"; };
+		635C3A581D9B8E4D008459A9 /* NHPlaneView.nib */ = {isa = PBXFileReference; lastKnownFileType = file; path = NHPlaneView.nib; sourceTree = "<group>"; };
+		635C3A5A1D9B8E4D008459A9 /* NHCarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHCarView.h; sourceTree = "<group>"; };
+		635C3A5B1D9B8E4D008459A9 /* NHFighterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHFighterView.h; sourceTree = "<group>"; };
+		635C3A5C1D9B8E4D008459A9 /* NHHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHHeader.h; sourceTree = "<group>"; };
+		635C3A5D1D9B8E4D008459A9 /* NHPlaneView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHPlaneView.h; sourceTree = "<group>"; };
+		635C3A5E1D9B8E4D008459A9 /* NHPresentFlower.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHPresentFlower.h; sourceTree = "<group>"; };
+		635C3A5F1D9B8E4D008459A9 /* NHCarViews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHCarViews.h; sourceTree = "<group>"; };
+		635C3A601D9B8E4D008459A9 /* NHCarViews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHCarViews.m; sourceTree = "<group>"; };
+		635C3A611D9B8E4D008459A9 /* NHCarViews.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NHCarViews.xib; sourceTree = "<group>"; };
+		635C3A621D9B8E4D008459A9 /* NHGiftAnimtionSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = NHGiftAnimtionSDK.a; sourceTree = "<group>"; };
+		635C3A631D9B8E4D008459A9 /* NHPlaneViews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHPlaneViews.h; sourceTree = "<group>"; };
+		635C3A641D9B8E4D008459A9 /* NHPlaneViews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHPlaneViews.m; sourceTree = "<group>"; };
+		635C3A651D9B8E4D008459A9 /* NHPlaneViews.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NHPlaneViews.xib; sourceTree = "<group>"; };
+		635C3A661D9B8E4D008459A9 /* resource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = resource.bundle; sourceTree = "<group>"; };
+		635C3A781D9B97B0008459A9 /* BMeteorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMeteorView.h; sourceTree = "<group>"; };
+		635C3A791D9B97B0008459A9 /* BMeteorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMeteorView.m; sourceTree = "<group>"; };
+		635C3A7B1D9B97C5008459A9 /* BMeteorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BMeteorView.xib; sourceTree = "<group>"; };
+		635C3A7D1D9B9F50008459A9 /* BFirework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFirework.h; sourceTree = "<group>"; };
+		635C3A7E1D9B9F50008459A9 /* BFirework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFirework.m; sourceTree = "<group>"; };
+		635C3A801D9B9F5D008459A9 /* BFirework.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BFirework.xib; sourceTree = "<group>"; };
 		637DF13D1D98B56300C1A21C /* AnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationView.h; sourceTree = "<group>"; };
 		637DF13E1D98B56300C1A21C /* AnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationView.m; sourceTree = "<group>"; };
 		637DF1401D98B5F000C1A21C /* AnimationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnimationView.xib; sourceTree = "<group>"; };
@@ -83,7 +123,6 @@
 		637DF1451D98B65100C1A21C /* AnimationHeaderIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationHeaderIconView.h; sourceTree = "<group>"; };
 		637DF1461D98B65100C1A21C /* AnimationHeaderIconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationHeaderIconView.m; sourceTree = "<group>"; };
 		637DF14A1D98B69500C1A21C /* AnimationHeaderIconView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnimationHeaderIconView.xib; sourceTree = "<group>"; };
-		637DF14C1D98F69C00C1A21C /* NHGiftAnimtionSDK */ = {isa = PBXFileReference; lastKnownFileType = folder; path = NHGiftAnimtionSDK; sourceTree = "<group>"; };
 		637DF14E1D98F9A800C1A21C /* AnimationGiftListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationGiftListView.h; sourceTree = "<group>"; };
 		637DF14F1D98F9A800C1A21C /* AnimationGiftListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationGiftListView.m; sourceTree = "<group>"; };
 		637DF1511D98F9B500C1A21C /* AnimationGiftListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnimationGiftListView.xib; sourceTree = "<group>"; };
@@ -115,7 +154,7 @@
 		63B2D52D1D911A3800CA2339 /* BaseTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTabBarController.h; sourceTree = "<group>"; };
 		63B2D52E1D911A3800CA2339 /* BaseTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTabBarController.m; sourceTree = "<group>"; };
 		63B2D5301D911AD200CA2339 /* PlayDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayDetailViewController.h; sourceTree = "<group>"; };
-		63B2D5311D911AD200CA2339 /* PlayDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayDetailViewController.m; sourceTree = "<group>"; };
+		63B2D5311D911AD200CA2339 /* PlayDetailViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PlayDetailViewController.mm; sourceTree = "<group>"; };
 		63B2D5341D911B2E00CA2339 /* PlayCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayCollectionViewCell.h; sourceTree = "<group>"; };
 		63B2D5351D911B2E00CA2339 /* PlayCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayCollectionViewCell.m; sourceTree = "<group>"; };
 		63B2D5381D91275E00CA2339 /* PlayAnchorModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayAnchorModel.h; sourceTree = "<group>"; };
@@ -142,6 +181,7 @@
 				63B2D54A1D92252700CA2339 /* SystemConfiguration.framework in Frameworks */,
 				63B2D57A1D924E3700CA2339 /* AlivcLiveVideo.framework in Frameworks */,
 				63B2D5791D924E3700CA2339 /* AlivcLiveChatRoomUI.framework in Frameworks */,
+				635C3A6F1D9B8E4D008459A9 /* NHGiftAnimtionSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,10 +202,73 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		635C3A4F1D9B8E2E008459A9 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				635C3A501D9B8E4D008459A9 /* NHGiftAnimtionSDK */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		635C3A501D9B8E4D008459A9 /* NHGiftAnimtionSDK */ = {
+			isa = PBXGroup;
+			children = (
+				635C3A511D9B8E4D008459A9 /* genuine */,
+				635C3A551D9B8E4D008459A9 /* imulator */,
+				635C3A591D9B8E4D008459A9 /* include */,
+				635C3A5F1D9B8E4D008459A9 /* NHCarViews.h */,
+				635C3A601D9B8E4D008459A9 /* NHCarViews.m */,
+				635C3A611D9B8E4D008459A9 /* NHCarViews.xib */,
+				635C3A781D9B97B0008459A9 /* BMeteorView.h */,
+				635C3A791D9B97B0008459A9 /* BMeteorView.m */,
+				635C3A7B1D9B97C5008459A9 /* BMeteorView.xib */,
+				635C3A7D1D9B9F50008459A9 /* BFirework.h */,
+				635C3A7E1D9B9F50008459A9 /* BFirework.m */,
+				635C3A801D9B9F5D008459A9 /* BFirework.xib */,
+				635C3A621D9B8E4D008459A9 /* NHGiftAnimtionSDK.a */,
+				635C3A631D9B8E4D008459A9 /* NHPlaneViews.h */,
+				635C3A641D9B8E4D008459A9 /* NHPlaneViews.m */,
+				635C3A651D9B8E4D008459A9 /* NHPlaneViews.xib */,
+				635C3A661D9B8E4D008459A9 /* resource.bundle */,
+			);
+			path = NHGiftAnimtionSDK;
+			sourceTree = "<group>";
+		};
+		635C3A511D9B8E4D008459A9 /* genuine */ = {
+			isa = PBXGroup;
+			children = (
+				635C3A521D9B8E4D008459A9 /* NHCarView.nib */,
+				635C3A531D9B8E4D008459A9 /* NHFighterView.nib */,
+				635C3A541D9B8E4D008459A9 /* NHPlaneView.nib */,
+			);
+			path = genuine;
+			sourceTree = "<group>";
+		};
+		635C3A551D9B8E4D008459A9 /* imulator */ = {
+			isa = PBXGroup;
+			children = (
+				635C3A561D9B8E4D008459A9 /* NHCarView.nib */,
+				635C3A571D9B8E4D008459A9 /* NHFighterView.nib */,
+				635C3A581D9B8E4D008459A9 /* NHPlaneView.nib */,
+			);
+			path = imulator;
+			sourceTree = "<group>";
+		};
+		635C3A591D9B8E4D008459A9 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				635C3A5A1D9B8E4D008459A9 /* NHCarView.h */,
+				635C3A5B1D9B8E4D008459A9 /* NHFighterView.h */,
+				635C3A5C1D9B8E4D008459A9 /* NHHeader.h */,
+				635C3A5D1D9B8E4D008459A9 /* NHPlaneView.h */,
+				635C3A5E1D9B8E4D008459A9 /* NHPresentFlower.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
 		637DF13C1D98B4C200C1A21C /* Animation */ = {
 			isa = PBXGroup;
 			children = (
-				637DF14C1D98F69C00C1A21C /* NHGiftAnimtionSDK */,
 				637DF13D1D98B56300C1A21C /* AnimationView.h */,
 				637DF13E1D98B56300C1A21C /* AnimationView.m */,
 				637DF1401D98B5F000C1A21C /* AnimationView.xib */,
@@ -211,6 +314,7 @@
 		63B2D4EB1D9112ED00CA2339 /* LiveVideoDemo */ = {
 			isa = PBXGroup;
 			children = (
+				635C3A4F1D9B8E2E008459A9 /* lib */,
 				637DF13C1D98B4C200C1A21C /* Animation */,
 				63B2D5281D91199700CA2339 /* Helper */,
 				63B2D5211D9118DF00CA2339 /* My */,
@@ -271,7 +375,7 @@
 				63B2D54B1D9229D700CA2339 /* AliVcMoiveViewController.m */,
 				63B2D54C1D9229D700CA2339 /* AliVcMoiveViewController.h */,
 				63B2D5301D911AD200CA2339 /* PlayDetailViewController.h */,
-				63B2D5311D911AD200CA2339 /* PlayDetailViewController.m */,
+				63B2D5311D911AD200CA2339 /* PlayDetailViewController.mm */,
 				63B2D53F1D921D3800CA2339 /* PlayDetailViewController.storyboard */,
 			);
 			path = Play;
@@ -449,13 +553,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				63B2D4FC1D9112ED00CA2339 /* LaunchScreen.storyboard in Resources */,
+				635C3A6B1D9B8E4D008459A9 /* NHFighterView.nib in Resources */,
 				637DF1571D98FDF000C1A21C /* AnimationGiftIconView.xib in Resources */,
 				63B2D4F91D9112ED00CA2339 /* Assets.xcassets in Resources */,
+				635C3A6A1D9B8E4D008459A9 /* NHCarView.nib in Resources */,
+				635C3A7C1D9B97C5008459A9 /* BMeteorView.xib in Resources */,
+				635C3A711D9B8E4D008459A9 /* NHPlaneViews.xib in Resources */,
 				63B2D5401D921D3800CA2339 /* PlayDetailViewController.storyboard in Resources */,
 				637DF1521D98F9B500C1A21C /* AnimationGiftListView.xib in Resources */,
 				637DF1411D98B5F000C1A21C /* AnimationView.xib in Resources */,
+				635C3A691D9B8E4D008459A9 /* NHPlaneView.nib in Resources */,
+				635C3A6C1D9B8E4D008459A9 /* NHPlaneView.nib in Resources */,
+				635C3A721D9B8E4D008459A9 /* resource.bundle in Resources */,
+				635C3A811D9B9F5D008459A9 /* BFirework.xib in Resources */,
+				635C3A671D9B8E4D008459A9 /* NHCarView.nib in Resources */,
+				635C3A6E1D9B8E4D008459A9 /* NHCarViews.xib in Resources */,
 				63B2D4F71D9112ED00CA2339 /* Main.storyboard in Resources */,
-				637DF14D1D98F69C00C1A21C /* NHGiftAnimtionSDK in Resources */,
+				635C3A681D9B8E4D008459A9 /* NHFighterView.nib in Resources */,
 				637DF14B1D98B69500C1A21C /* AnimationHeaderIconView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -490,11 +604,15 @@
 				63B2D52C1D9119F700CA2339 /* BaseNavigationController.m in Sources */,
 				63B2D5361D911B2E00CA2339 /* PlayCollectionViewCell.m in Sources */,
 				63B2D4F11D9112ED00CA2339 /* AppDelegate.m in Sources */,
-				63B2D5321D911AD200CA2339 /* PlayDetailViewController.m in Sources */,
+				635C3A701D9B8E4D008459A9 /* NHPlaneViews.m in Sources */,
+				635C3A7A1D9B97B0008459A9 /* BMeteorView.m in Sources */,
+				63B2D5321D911AD200CA2339 /* PlayDetailViewController.mm in Sources */,
 				63B2D5241D91193F00CA2339 /* PlayCollectionViewController.m in Sources */,
 				637DF1441D98B62B00C1A21C /* AnimationHeaderScrollView.m in Sources */,
 				63B2D53A1D91275E00CA2339 /* PlayAnchorModel.m in Sources */,
 				63B2D54D1D9229D700CA2339 /* AliVcMoiveViewController.m in Sources */,
+				635C3A6D1D9B8E4D008459A9 /* NHCarViews.m in Sources */,
+				635C3A7F1D9B9F50008459A9 /* BFirework.m in Sources */,
 				637DF1551D98FDDD00C1A21C /* AnimationGiftIconView.m in Sources */,
 				63B2D5441D9220CB00CA2339 /* Reachability.m in Sources */,
 				63B2D4EE1D9112ED00CA2339 /* main.m in Sources */,
@@ -648,6 +766,10 @@
 				INFOPLIST_FILE = LiveVideoDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/LiveVideoDemo/lib/NHGiftAnimtionSDK",
+				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = bomingli.LiveVideoDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -667,6 +789,10 @@
 				INFOPLIST_FILE = LiveVideoDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/LiveVideoDemo/lib/NHGiftAnimtionSDK",
+				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = bomingli.LiveVideoDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";

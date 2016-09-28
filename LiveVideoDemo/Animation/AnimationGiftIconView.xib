@@ -57,6 +57,12 @@
                 <constraint firstItem="XSP-Q5-pqe" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="48/80" id="ucY-ZT-1bD"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="experLabel" destination="ja5-F1-qEx" id="xQg-ZN-eZk"/>
+                <outlet property="giftImageView" destination="XSP-Q5-pqe" id="6gx-ae-3xK"/>
+                <outlet property="lianLabel" destination="ukO-Zg-AjJ" id="wVp-Cf-vmN"/>
+                <outlet property="zuanLabel" destination="qlT-WE-u0r" id="c5g-DQ-DIu"/>
+            </connections>
             <point key="canvasLocation" x="340" y="79.5"/>
         </view>
     </objects>

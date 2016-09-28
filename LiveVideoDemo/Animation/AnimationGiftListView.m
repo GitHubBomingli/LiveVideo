@@ -41,13 +41,25 @@
 }
 
 - (void)setScroll {
+    NSArray *gifts = @[@"giftFlower",@"giftFlower",@"plane-flower-1",@"plane-flower-2",
+                       @"plane-flower-3",@"plane-flower-4",@"plane-flower-5",@"plane-flower-6",
+                       @"car1",@"car2",@"car3",@"car4",
+                       @"car5",@"giftFireworks",@"heartFlower",@"Ship",
+                       @"giftMeteor",@"rocket",@"plane-head",@"",
+                       @"",@"",@"",@""
+                       ];
+    
     CGFloat width = (self.height - 30) / 2 / 1.25;
     CGFloat height = width * 1.25;
     for (NSInteger row = 0; row != 2; row ++) {
-        for (NSInteger col = 0; col != 16; col ++) {
+        for (NSInteger col = 0; col != 12; col ++) {
             AnimationGiftIconView *giftView = [[AnimationGiftIconView alloc] initWithFrame:CGRectMake(col * width, row * height, width, height)];
             [self.scrollView addSubview:giftView];
-            giftView.tag = row * 16 + col;
+            
+            
+            giftView.tag = row * 12 + col;
+            
+            giftView.giftImageView.image = [UIImage imageNamed:gifts[giftView.tag]];
             
             giftView.selectGift = ^(NSInteger selectedIndex) {
                 _selectedIndex = selectedIndex;
@@ -80,6 +92,12 @@
 - (IBAction)touchSendBtn:(UIButton *)sender {
     if (preGiftView != nil) {
         NSLog(@"%ld",_selectedIndex);
+        
+        if (_sendCallback) {
+            _sendCallback(_selectedIndex);
+        }
+        
+//        [self hide];
     }
 }
 

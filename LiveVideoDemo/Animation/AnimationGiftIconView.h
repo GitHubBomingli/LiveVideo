@@ -12,4 +12,12 @@
 
 @property (copy, nonatomic) void(^selectGift)(NSInteger);
 
+@property (strong, nonatomic) IBOutlet UIImageView *giftImageView;
+
+@property (strong, nonatomic) IBOutlet UILabel *lianLabel;
+
+@property (strong, nonatomic) IBOutlet UILabel *zuanLabel;
+
+@property (strong, nonatomic) IBOutlet UILabel *experLabel;
+
 @end

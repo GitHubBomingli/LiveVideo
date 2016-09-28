@@ -22,4 +22,6 @@
 - (void)show;
 
 - (void)hide;
+
+@property (copy, nonatomic) void(^sendCallback)(NSInteger);
 @end

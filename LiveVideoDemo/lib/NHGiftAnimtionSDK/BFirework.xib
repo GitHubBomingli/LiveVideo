@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="BFirework">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RQZ-c3-4TF">
+                    <rect key="frame" x="0.0" y="112" width="320" height="360"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yBo-DP-QbO">
+                    <rect key="frame" x="0.0" y="64" width="320" height="200"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="yBo-DP-QbO" secondAttribute="height" multiplier="8:5" id="gg7-Wm-RJX"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="yBo-DP-QbO" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="64" id="Bx5-DN-auP"/>
+                <constraint firstItem="yBo-DP-QbO" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="J1a-kC-Cki"/>
+                <constraint firstAttribute="trailing" secondItem="yBo-DP-QbO" secondAttribute="trailing" id="K8k-w0-hXw"/>
+                <constraint firstItem="RQZ-c3-4TF" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="360/480" id="KBP-Xh-yig"/>
+                <constraint firstAttribute="bottom" secondItem="RQZ-c3-4TF" secondAttribute="bottom" constant="8" id="bBE-JC-xes"/>
+                <constraint firstItem="RQZ-c3-4TF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="bDY-GF-XjK"/>
+                <constraint firstAttribute="trailing" secondItem="RQZ-c3-4TF" secondAttribute="trailing" id="k0g-pm-lpX"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="firstImageView" destination="RQZ-c3-4TF" id="3XE-z8-BuY"/>
+                <outlet property="scendImageView" destination="yBo-DP-QbO" id="WCV-kM-2tV"/>
+            </connections>
+        </view>
+    </objects>
+</document>
