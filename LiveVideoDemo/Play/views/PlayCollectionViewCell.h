@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "PlayAnchorModel.h"
+#import "UserModel.h"
 
 @interface PlayCollectionViewCell : UICollectionViewCell
 
@@ -26,4 +27,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *numLabel;
 
 - (void)setAnchorModel:(PlayAnchorModel *)anchorModel;
+
+@property (strong, nonatomic) UserModel *userModel;
 @end

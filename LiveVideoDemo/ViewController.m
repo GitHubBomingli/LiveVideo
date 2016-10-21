@@ -9,19 +9,34 @@
 #import "ViewController.h"
 #import <CoreTelephony/CTCallCenter.h>
 #import <CoreTelephony/CTCall.h>
+#import "LLGroupManager.h"
+#import "MyConfig.h"
+#import "AnimationView.h"
+#import "PrivateMessageViewController.h"
 
 @interface ViewController ()
 
 @property (nonatomic, strong) CTCallCenter *callCenter;
 
+/**
+ *  聊天、动画等视图
+ */
+@property (nonatomic, strong) AnimationView *animationView;
+
+@property (strong, nonatomic) LLGroupManager *groupManager;
+
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *startBtnHeight;
 
 @property (strong, nonatomic) IBOutlet UIButton *startBtn;
+
+@property (strong, nonatomic) IBOutlet UIButton *backBtn;
 
 /**
  *  美颜
  */
 @property (strong, nonatomic) IBOutlet UIButton *meiyanBtn;
+
+@property (strong, nonatomic) PrivateMessageViewController *messageVC;
 @end
 
 @implementation ViewController
@@ -46,8 +61,8 @@
     self.navigationController.navigationBar.hidden = YES;
     self.navigationController.tabBarController.tabBar.hidden = YES;
     
-    _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timeUpdate) userInfo:nil repeats:YES];
-    [self testPushCapture];
+//    _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timeUpdate) userInfo:nil repeats:YES];
+//    [self testPushCapture];
     //美颜
     [_liveSession setEnableSkin:self.meiyanBtn.isSelected];
 }
@@ -59,10 +74,62 @@
     self.navigationController.tabBarController.tabBar.hidden = NO;
 }
 
+- (PrivateMessageViewController *)messageVC {
+    if (!_messageVC) {
+        _messageVC = [[PrivateMessageViewController alloc] init];
+    }
+    return _messageVC;
+}
+
+- (AnimationView *)animationView {
+    if (_animationView == nil) {
+        
+        _animationView = [[AnimationView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
+        _animationView.backgroundColor = [UIColor clearColor];
+        _animationView.type = KAnimationTypeLive;
+        _animationView.groupId = [MyConfig shared].userGroupId;
+        [_animationView.backBtn addTarget:self action:@selector(TouchEndBtn:) forControlEvents:UIControlEventTouchUpInside];
+        [_animationView.cameraBtn addTarget:self action:@selector(cameraButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        [_animationView.meiYanBtn addTarget:self action:@selector(skinButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        
+        __block typeof(self) blockSelf = self;
+        _animationView.privateMessageCallback = ^() {
+            [blockSelf.navigationController pushViewController:blockSelf.messageVC animated:YES];
+        };
+        
+        UISwipeGestureRecognizer *rightSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(rightSwipe:)];
+        rightSwipe.direction = UISwipeGestureRecognizerDirectionRight;
+        [_animationView addGestureRecognizer:rightSwipe];
+        
+        [self rightSwipe:nil];
+    }
+    return _animationView;
+}
+
+- (void)rightSwipe:(UISwipeGestureRecognizer *)sender {
+    [UIView animateWithDuration:0.4 animations:^{
+        self.animationView.frame = CGRectMake([UIScreen mainScreen].bounds.size.width, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+    } completion:^(BOOL finished) {
+        self.backBtn.hidden = NO;
+    }];
+}
+
+- (void)leftSwipe:(UISwipeGestureRecognizer *)sender {
+    [UIView animateWithDuration:0.4 animations:^{
+        self.animationView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+    } completion:^(BOOL finished) {
+        self.backBtn.hidden = YES;
+    }];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    [self.view addSubview:self.animationView];
     
+    UISwipeGestureRecognizer *leftSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(leftSwipe:)];
+    leftSwipe.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:leftSwipe];
     
     _url = @"rtmp://video-center.alivecdn.com/app-name/video-name?vhost=live.lovcreate.com";
     
@@ -77,12 +144,15 @@
     UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchGesture:)];
     [self.view addGestureRecognizer:pinch];
     
-//    _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timeUpdate) userInfo:nil repeats:YES];
+//
     
     NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"log.txt"];
     [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
     [[NSFileManager defaultManager] createFileAtPath:path contents:nil attributes:nil];
     _handle = [NSFileHandle fileHandleForWritingAtPath:path];
+    
+     _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timeUpdate) userInfo:nil repeats:YES];
+    [self testPushCapture];
 }
 - (void)timeUpdate{
     AlivcLDebugInfo *i = [_liveSession dumpDebugInfo];
@@ -168,6 +238,7 @@
     
     _startBtnHeight.constant = 49;
     _startBtn.hidden = NO;
+    [self rightSwipe:nil];
 }
 
 - (void)appBecomeActive{
@@ -184,7 +255,9 @@
 }
 
 - (void)testPushCapture{
-    
+    if (_liveSession) {
+        return ;
+    }
     //    _url = @"rtmp://192.168.30.69/live/movie";
     
     //    _url = @"rtmp://push.lss.qupai.me/qupai-live/qupai-live-wyj99?auth_key=4466400545-0-0-1d54a5911b70caccfce6983bced975e8";
@@ -227,14 +300,14 @@
     
 }
 
-- (void)destroySession{
+- (void)destroySession {
     
     [_liveSession alivcLiveVideoDisconnectServer];
     
     [_liveSession alivcLiveVideoStopPreview];
-    [_liveSession.previewView removeFromSuperview];
+//    [_liveSession.previewView removeFromSuperview];
     
-    _liveSession = nil;
+//    _liveSession = nil;
 }
 
 
@@ -299,21 +372,37 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (LLGroupManager *)groupManager {
+    if (!_groupManager) {
+        _groupManager = [[LLGroupManager alloc] init];
+    }
+    return _groupManager;
+}
 
 #pragma mark - Touch or Action
-
+//开始直播
 - (IBAction)touchStartLiveVideoBtn:(UIButton *)sender {
-    
+    //开始直播
     [_liveSession alivcLiveVideoConnectServer];
+    
+    [self startChat];
     
     [UIView animateWithDuration:1 animations:^{
         _startBtnHeight.constant = 0;
     } completion:^(BOOL finished) {
         _startBtn.hidden = YES;
     }];
+    
+    [self leftSwipe:nil];
 }
-
+//结束直播
 - (IBAction)TouchEndBtn:(UIButton *)sender {
+    
+    //销毁群组
+    //    [self.groupManager destroyGroupWith:@""];
+    //退出群组
+    [self.groupManager leaveGroupWith:GROUPID];
+    
     
     [_liveSession alivcLiveVideoDisconnectServer];
     
@@ -328,22 +417,41 @@
     self.navigationController.navigationBar.hidden = NO;
     
     self.navigationController.tabBarController.selectedIndex = 0;
+    
+    MyConfig *config = [MyConfig shared];
+    Network *network = [[Network alloc] init];
+    [network networkWithAction:@"uploadLiveState" params:@{@"userId":config.userId,@"userIsLiveing":@"0"} success:^(NSDictionary *data) {
+    } failure:^(NSDictionary *data) {
+    } view:nil];
+    config.userIsLiveing = @"0";
 }
 
 //前后摄像头
-- (IBAction)cameraButtonClick:(UIButton *)button {
+- (void)cameraButtonClick:(UIButton *)button {
     button.selected = !button.isSelected;
     _liveSession.devicePosition = button.isSelected ? AVCaptureDevicePositionBack : AVCaptureDevicePositionFront;
     _currentPosition = _liveSession.devicePosition;
 }
 //美颜
-- (IBAction)skinButtonClick:(UIButton *)button {
+- (void)skinButtonClick:(UIButton *)button {
     button.selected = !button.isSelected;
     [_liveSession setEnableSkin:button.isSelected];
 }
 - (IBAction)flashButtonClick:(UIButton *)button {
     button.selected = !button.isSelected;
     _liveSession.torchMode = button.isSelected ? AVCaptureTorchModeOn : AVCaptureTorchModeOff;
+}
+
+#pragma mark - 聊天
+- (void)startChat {
+    
+    MyConfig *config = [MyConfig shared];
+    
+    Network *network = [[Network alloc] init];
+    [network networkWithAction:@"uploadLiveState" params:@{@"userId":config.userId,@"userIsLiveing":@"1"} success:^(NSDictionary *data) {
+    } failure:^(NSDictionary *data) {
+    } view:nil];
+    config.userIsLiveing = @"1";
 }
 
 - (void)dealloc{

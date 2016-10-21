@@ -39,13 +39,19 @@
 
 - (void)config {
     
+    NSTimeInterval time = self.animationDuration ? self.animationDuration : 4;
+    
     self.meteorImageView.animationImages = self.sources;
     
-    self.meteorImageView.animationDuration = self.animationDuration ? self.animationDuration : 4;
+    self.meteorImageView.animationDuration = time;
     
     self.meteorImageView.animationRepeatCount = 1;
     
     [self.meteorImageView startAnimating];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self removeFromSuperview];
+    });
 }
 
 - (NSMutableArray *)sources {

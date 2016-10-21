@@ -16,6 +16,9 @@
 #import "Reachability.h"
 
 #import "AnimationView.h"
+#import "LLGroupManager.h"
+#import "ChatViewController.h"
+#import "BaseNavigationController.h"
 
 typedef NS_ENUM(NSInteger, GestureType){
     GestureTypeOfNone = 0,
@@ -75,6 +78,10 @@ static const CGFloat iPhoneScreenPortraitWidth = 320.f;
 
 @property (nonatomic, strong) UIButton *backBtn;
 
+@property (strong, nonatomic) LLGroupManager *groupManager;
+
+@property (nonatomic, strong) ChatViewController *chatVC;
+
 @end
 
 @implementation TBMoiveViewController
@@ -100,8 +107,18 @@ static const CGFloat iPhoneScreenPortraitWidth = 320.f;
 @synthesize fadeDelay;
 @synthesize conn;
 
+- (LLGroupManager *)groupManager {
+    if (!_groupManager) {
+        _groupManager = [[LLGroupManager alloc] init];
+    }
+    return _groupManager;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //加入群组
+    [self.groupManager joinGroupWith:self.groupId];
+    
     
     [[UIApplication sharedApplication] setIdleTimerDisabled: YES];
     
@@ -138,12 +155,28 @@ static const CGFloat iPhoneScreenPortraitWidth = 320.f;
     [self.view addGestureRecognizer:leftSwipe];
 }
 
+- (ChatViewController *)chatVC {
+    if (!_chatVC) {
+//        self.userModel.userEMName;
+        _chatVC = [[ChatViewController alloc] initWithConversationChatter:self.userModel.userEMName conversationType:EMConversationTypeChat];
+    }
+    return _chatVC;
+}
+
 - (AnimationView *)animationView {
     if (_animationView == nil) {
 
         _animationView = [[AnimationView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
         _animationView.backgroundColor = [UIColor clearColor];
+        _animationView.type = KAnimationTypePlay;
+        _animationView.groupId = self.groupId;
         [_animationView.backBtn addTarget:self action:@selector(DonePressed:) forControlEvents:UIControlEventTouchUpInside];
+        
+        __block typeof(self) blockSelf = self;
+        _animationView.privateMessageCallback = ^() {
+            
+            [blockSelf.navigationController pushViewController:blockSelf.chatVC animated:YES];
+        };
         
         UISwipeGestureRecognizer *rightSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(rightSwipe:)];
         rightSwipe.direction = UISwipeGestureRecognizerDirectionRight;
@@ -475,7 +508,10 @@ static const CGFloat iPhoneScreenPortraitWidth = 320.f;
     mPlayer = nil;
     mSourceURL = nil;
 
-    [self dismissViewControllerAnimated:YES completion:nil];
+    //退出群组
+    [self.groupManager leaveGroupWith:self.groupId];
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 //- (void)seekForwardPressed:(UIButton *)button {
@@ -563,6 +599,12 @@ static const CGFloat iPhoneScreenPortraitWidth = 320.f;
     CGFloat seekHeight = 20.f;
     CGFloat paddingBetweenPlaybackButtons = width <= iPhoneScreenPortraitWidth ? 20.f : 30.f;
     
+    
+    if (barHeight == 0) {
+        bottomBar.hidden = YES;
+    } else {
+        bottomBar.hidden = NO;
+    }
 //    seekForwardButton.frame = CGRectMake(playBtn.frame.origin.x + playBtn.frame.size.width + paddingBetweenPlaybackButtons, barHeight/2 - seekHeight/2 + 1.f, seekWidth, seekHeight);
 //    seekBackwardButton.frame = CGRectMake(playBtn.frame.origin.x - paddingBetweenPlaybackButtons - seekWidth, barHeight/2 - seekHeight/2 + 1.f, seekWidth, seekHeight);
     
@@ -925,7 +967,7 @@ static const CGFloat iPhoneScreenPortraitWidth = 320.f;
     if(error_code > 500 || error_code == ALIVC_ERR_FUNCTION_DENIED) {
         
         [mPlayer reset];
-        UIAlertView *alter = [[UIAlertView alloc] initWithTitle:@"播放器错误" message:error_msg delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView *alter = [[UIAlertView alloc] initWithTitle:@"播放器错误" message:error_msg delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
         
         [alter show];
         return;
@@ -1090,10 +1132,14 @@ static const CGFloat iPhoneScreenPortraitWidth = 320.f;
 
 - (void)viewWillAppear:(BOOL)animated{
     _systemBrightness = [UIScreen mainScreen].brightness;
+    
+    self.navigationController.navigationBar.hidden = YES;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [UIScreen mainScreen].brightness = _systemBrightness;
+    
+    self.navigationController.navigationBar.hidden = YES;
 }
 
 - (void)brightnessAdd:(CGFloat)step{

@@ -29,4 +29,18 @@
     _numLabel.text = anchorModel.anchorViewNum;
 }
 
+- (void)setUserModel:(UserModel *)userModel {
+    _userModel = userModel;
+    
+    _backgroundImageView.image = [UIImage imageNamed:userModel.userIcon];
+    
+    _iconImageView.image = [UIImage imageNamed:userModel.userIcon];
+    
+    _nameLabel.text = userModel.userName;
+    
+    _addressLabel.text = userModel.userAddress;
+    
+    _numLabel.text = userModel.userViewNum;
+}
+
 @end

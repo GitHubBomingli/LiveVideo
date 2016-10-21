@@ -14,9 +14,23 @@
 #import "NHPlaneViews.h"
 #import "BMeteorView.h"
 #import "BFirework.h"
+#import "BRocketView.h"
+#import "InputView.h"
+#import "EMClient.h"
+#import "LiveChatTableViewCell.h"
+#import "BheartFlowerView.h"
+
 
 #define NHBounds [UIScreen mainScreen].bounds.size
-@interface AnimationView ()
+@interface AnimationView ()<InputViewDelegate,EMChatManagerDelegate,UITableViewDelegate,UITableViewDataSource>
+
+@property (nonatomic, strong) InputView *inputView;
+
+@property (nonatomic, strong) NSMutableDictionary *messageExt;
+
+@property (nonatomic, strong) EMConversation *conversation;
+
+@property (nonatomic, strong) NSMutableArray *messages;
 
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *headerWidth;
 
@@ -47,37 +61,112 @@
         
         [self addSubview:self.giftListView];
         
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
-        [self addGestureRecognizer:tap];
+//        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
+//        [self addGestureRecognizer:tap];
+        
+        [self tableDelegate];
+        
+        [self chatDelegate];
         
     }
     return self;
 }
 
+#pragma mark - Get Set
+
+- (UIView *)inputView {
+    if (!_inputView) {
+        _inputView = [[InputView alloc] initWithFrame:CGRectMake(0, kScreenHeight, kScreenWidth, 49)];
+        _inputView.delegate = self;
+        _inputView.inputModel = InputModelText;
+        [self addSubview:_inputView];
+    }
+    return _inputView;
+}
+
+- (NSMutableDictionary *)messageExt {
+    if (!_messageExt) {
+        _messageExt = [NSMutableDictionary dictionary];
+    }
+    return _messageExt;
+}
+
+- (EMConversation *)conversation {
+    if (!_conversation) {
+        _conversation = [[EMClient sharedClient].chatManager getConversation:self.groupId type:EMConversationTypeGroupChat createIfNotExist:YES];
+    }
+    return _conversation;
+}
+
+- (NSMutableArray *)messages {
+    if (!_messages) {
+        _messages = [NSMutableArray array];
+    }
+    return _messages;
+}
+
 - (AnimationGiftListView *)giftListView {
     if (_giftListView == nil) {
-        CGFloat height = [UIScreen mainScreen].bounds.size.width / 4.f * 1.25 * 2 + 30;
+        CGFloat height = kScreenWidth / 4.f * 1.25 * 2 + 30;
         _giftListView = [[AnimationGiftListView alloc] initWithHeight:height];
         __weak typeof(self) blockSelf = self;
         _giftListView.sendCallback = ^(NSInteger giftIndex) {
-//            [blockSelf tap:nil];
             
-            [blockSelf giftAnimationWithTag:giftIndex];
+            [blockSelf sendCmdMessageWithGift:giftIndex];
         };
     }
     return _giftListView;
 }
 
-- (void)tap:(UIGestureRecognizer *)sender {
-    if (self.commentBtn.hidden) {
+- (void)setType:(KAnimationType)type {
+    _type = type;
+    
+    if (self.type == KAnimationTypePlay) {
+        self.cameraBtn.hidden = YES;
+        self.meiYanBtn.hidden = YES;
         self.giftBtn.hidden = NO;
-        self.backBtn.hidden = NO;
-        self.commentBtn.hidden = NO;
-        self.siXinBtn.hidden = NO;
-        self.commentTable.hidden = NO;
+    } else {
+        self.cameraBtn.hidden = NO;
+        self.meiYanBtn.hidden = NO;
+        self.giftBtn.hidden = YES;
+    }
+}
+
+#pragma mark - Action
+
+- (void)tap:(UIGestureRecognizer *)sender {
+    
+    if (self.commentBtn.hidden) {
+        
+        if (self.type == KAnimationTypePlay) {
+            self.giftBtn.hidden = NO;
+            self.backBtn.hidden = NO;
+            self.commentBtn.hidden = NO;
+            self.siXinBtn.hidden = NO;
+            self.commentTable.hidden = NO;
+            self.cameraBtn.hidden = YES;
+            self.meiYanBtn.hidden = YES;
+        } else {
+            self.giftBtn.hidden = YES;
+            self.backBtn.hidden = NO;
+            self.commentBtn.hidden = NO;
+            self.siXinBtn.hidden = NO;
+            self.commentTable.hidden = NO;
+            self.cameraBtn.hidden = NO;
+            self.meiYanBtn.hidden = NO;
+        }
         
         [self.giftListView hide];
     }
+    
+    [self.inputView.textField resignFirstResponder];
+    self.inputView.frame = CGRectMake(0, kScreenHeight, kScreenWidth, 49);
+}
+- (IBAction)sendMessage:(UIButton *)sender {
+    
+    [self.inputView.textField becomeFirstResponder];
+    
+    self.inputView.frame = CGRectMake(0, kScreenHeight - 49, kScreenWidth, 49);
 }
 
 - (IBAction)giftBtn:(UIButton *)sender {
@@ -91,6 +180,11 @@
     
 }
 
+- (IBAction)privateMessage:(UIButton *)sender {
+    if (_privateMessageCallback) {
+        _privateMessageCallback();
+    }
+}
 
 - (IBAction)addConcern:(UIButton *)sender {
     self.headerWidth.constant -= 30;
@@ -99,6 +193,138 @@
     [self.scrollView removeFromSuperview];
     self.scrollView = [[AnimationHeaderScrollView alloc] initWithFrame:CGRectMake(self.headerView.frame.size.width + self.headerView.frame.origin.x + 8 - 30, 16, self.frame.size.width - (self.headerView.frame.size.width + self.headerView.frame.origin.x + 8) + 30, 38)];
     [self addSubview:self.scrollView];
+}
+
+#pragma mark - InputView Delegate
+- (void)inputView:(InputView *)inputView willShowKeyboardHeight:(CGFloat)height time:(NSNumber *)time {
+    
+}
+- (void)willHideKeyboardWithInputView:(InputView *)inputView time:(NSNumber *)time {
+    
+}
+- (void)inputView:(InputView *)inputView text:(NSString *)text {
+    inputView.textField.text = @"";
+    
+    
+    EMTextMessageBody *body = [[EMTextMessageBody alloc] initWithText:text];
+    NSString *from = [[EMClient sharedClient] currentUsername];
+    
+    //生成Message
+    EMMessage *message = [[EMMessage alloc] initWithConversationID:self.conversation.conversationId from:from to:self.conversation.conversationId body:body ext:self.messageExt];
+    message.chatType = EMChatTypeGroupChat;// 设置为群聊消息
+    
+    [[EMClient sharedClient].chatManager sendMessage:message progress:^(int progress) {
+        
+    } completion:^(EMMessage *message, EMError *error) {
+        
+    }];
+    
+    NSInteger count = self.messages.count;
+    [self.messages addObject:message];
+    [self.commentTable insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:count inSection:0]] withRowAnimation:UITableViewRowAnimationBottom];
+    [self.commentTable scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:(self.messages.count - 1) inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+}
+
+#pragma mark - 聊天
+- (void)chatDelegate {
+    //移除消息回调
+    [[EMClient sharedClient].chatManager removeDelegate:self];
+    
+    //注册消息回调
+    [[EMClient sharedClient].chatManager addDelegate:self delegateQueue:nil];
+}
+//接到普通消息
+- (void)messagesDidReceive:(NSArray *)aMessages {
+    EMMessage *message = aMessages.lastObject;
+    if (message.chatType == EMChatTypeGroupChat) {
+        NSInteger count = self.messages.count;
+        [self.messages addObject:aMessages.lastObject];
+        [self.commentTable insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:count inSection:0]] withRowAnimation:UITableViewRowAnimationBottom];
+        [self.commentTable scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:(self.messages.count - 1) inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    }
+}
+//接到透传消息
+- (void)cmdMessagesDidReceive:(NSArray *)aCmdMessages {
+    for (EMMessage *message in aCmdMessages) {
+        EMCmdMessageBody *body = (EMCmdMessageBody *)message.body;
+        [self giftAnimationWithTag:[body.action integerValue]];
+    }
+}
+//发送透传消息，用于礼物
+- (void)sendCmdMessageWithGift:(NSInteger)giftIndex {
+    
+    EMCmdMessageBody *body = [[EMCmdMessageBody alloc] initWithAction:[NSString stringWithFormat:@"%ld",giftIndex]];
+    NSString *from = [[EMClient sharedClient] currentUsername];
+    
+    // 生成message
+    EMMessage *message = [[EMMessage alloc] initWithConversationID:self.conversation.conversationId from:from to:self.conversation.conversationId body:body ext:self.messageExt];
+    message.chatType = EMChatTypeGroupChat;// 设置为群聊消息
+    
+    [[EMClient sharedClient].chatManager sendMessage:message progress:^(int progress) {
+        
+    } completion:^(EMMessage *message, EMError *error) {
+        [self giftAnimationWithTag:giftIndex];
+    }];
+}
+
+
+#pragma mark - Table View
+
+- (void)tableDelegate {
+    self.commentTable.delegate = self;
+    self.commentTable.dataSource = self;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.messages.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    LiveChatTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LiveChatTableViewCell"];
+    if (!cell) {
+        cell = [[NSBundle mainBundle] loadNibNamed:@"LiveChatTableViewCell" owner:self options:nil].lastObject;
+    }
+    
+    NSString *contentString = nil;
+    EMMessage *message = self.messages[indexPath.row];
+    
+    EMMessageBody *msgBody = message.body;
+    switch (msgBody.type) {
+        case EMMessageBodyTypeText:
+        {
+            // 收到的文字消息
+            EMTextMessageBody *textBody = (EMTextMessageBody *)msgBody;
+            
+            contentString = [NSString stringWithFormat:@"%@：%@",message.from,textBody.text];
+        }
+            break;
+        default:
+            break;
+    }
+    
+    cell.chatLabel.text = contentString;
+    cell.backgroundColor = [UIColor clearColor];
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *contentString = nil;
+    EMMessage *message = self.messages[indexPath.row];
+    
+    EMMessageBody *msgBody = message.body;
+    switch (msgBody.type) {
+        case EMMessageBodyTypeText:
+        {
+            // 收到的文字消息
+            EMTextMessageBody *textBody = (EMTextMessageBody *)msgBody;
+            
+            contentString = [NSString stringWithFormat:@"%@：%@",message.from,textBody.text];
+        }
+            break;
+        default:
+            break;
+    }
+    return [contentString boundingRectWithSize:CGSizeMake(kScreenWidth - 96, 0) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading | NSStringDrawingTruncatesLastVisibleLine attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height + 8;
 }
 
 #pragma mark - Gift Animation
@@ -111,19 +337,25 @@
         case 1:
             [self flowerB];
             break;
-        case 12:
+        case 2:
             [self porscheAction];
             break;
-        case 13:
+        case 3:
             [self fireworksGift];
             break;
-        case 15:
+        case 4:
+            [self heartFlowerAction];
+            break;
+        case 5:
             [self fighterAction];
             break;
-        case 16:
+        case 6:
             [self meteorGift];
             break;
-        case 18:
+        case 7:
+            [self rocketGift];
+            break;
+        case 8:
             [self planeAction];
             break;
             
@@ -196,20 +428,46 @@
     [plane addAnimationsMoveToPoint:CGPointMake(NHBounds.width, 100) endPoint:CGPointMake(-500, 410)];
     [self addSubview:plane];
 }
+//1314
+- (void)heartFlowerAction {
+    BheartFlowerView *heartFlower = [[BheartFlowerView alloc] initWithFrame:self.bounds];
+    [self addSubview:heartFlower];
+}
 //钻石
 - (void)meteorGift {
     BMeteorView *meteor = [[BMeteorView alloc] initWithFrame:self.bounds];
     meteor.animationDuration = 4;
     [self addSubview:meteor];
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [meteor removeFromSuperview];
-    });
 }
 //烟花
 - (void)fireworksGift {
     BFirework *firework = [[BFirework alloc] initWithFrame:self.bounds];
     firework.animationDuration = 0.4;
     [self addSubview:firework];
+}
+
+- (void)rocketGift {
+    BRocketView *rocketView = [[BRocketView alloc] initWithFrame:self.bounds];
+    [self addSubview:rocketView];
+    
+    [UIView animateWithDuration:1 animations:^{
+        CGRect frame = self.bounds;
+        frame.origin.y -= 64;
+        rocketView.frame = frame;
+    }];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [UIView animateWithDuration:0.5 animations:^{
+            CGRect frame = self.bounds;
+            frame.origin.y -= 1000;
+            rocketView.frame = frame;
+        }];
+    });
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [super touchesEnded:touches withEvent:event];
+    
+    [self tap:nil];
 }
 @end

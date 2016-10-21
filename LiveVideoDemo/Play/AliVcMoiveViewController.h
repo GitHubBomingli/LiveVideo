@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UserModel.h"
 
 @interface TBMoiveViewController : UIViewController
 
@@ -41,6 +42,10 @@
  *  如果位本地地址，则需要用[NSURL fileURLWithPath:path]初始化NSURL
  *  如果为网络地址则需要用[NSURL URLWithString:path]初始化NSURL
  */
-- (void) SetMoiveSource:(NSURL*)url; 
+- (void) SetMoiveSource:(NSURL*)url;
+
+@property (copy, nonatomic) NSString *groupId;
+
+@property (strong, nonatomic) UserModel *userModel;
 
 @end

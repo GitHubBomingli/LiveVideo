@@ -12,6 +12,9 @@
 #import "PlayDetailViewController.h"
 
 #import "AliVcMoiveViewController.h"
+#import "MJRefresh.h"
+#import "PrivateMessageViewController.h"
+#import "PlayingUserListModel.h"
 //#import "VideoListViewController.h"
 
 @interface PlayCollectionViewController ()
@@ -19,7 +22,14 @@
 
 @property (strong, nonatomic) NSMutableArray *source;
 
+@property (assign, nonatomic) NSInteger page;
+
+@property (strong, nonatomic) PrivateMessageViewController *messageVC;
+
+@property (assign, nonatomic) BOOL isNetwork;
+
 @end
+
 
 @implementation PlayCollectionViewController
 @synthesize videolists,datasource;
@@ -160,19 +170,18 @@ NSString* accessKeySecret = @"hipHJKpt0TdznQG2J4D0EVSavRH7mR";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Register cell classes
-    
-    
-//    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
-    
-    // Do any additional setup after loading the view.
-    
-    if (self.source.count) {
+    self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        
+        self.page = 0;
+        
+        [self loadData];
+        
+        [self.collectionView.mj_header endRefreshing];
+        
         [self.collectionView reloadData];
-    }
+    }];
+    
+    [self loadData];
     
     
     videolists = [[NSMutableDictionary alloc]init];
@@ -186,17 +195,58 @@ NSString* accessKeySecret = @"hipHJKpt0TdznQG2J4D0EVSavRH7mR";
     if (!_source) {
         _source = [NSMutableArray array];
         for (NSInteger i = 0; i != 10; i ++) {
-            PlayAnchorModel *anchorModel = [[PlayAnchorModel alloc] init];
-            anchorModel.anchorName = [NSString stringWithFormat:@"面朝大海，春暖花开%ld",i];
-            anchorModel.anchorIcon = [NSString stringWithFormat:@"icon%ld",i % 4];
-            anchorModel.anchorAddress = @"长春市南三环与幸福街交汇";
-            anchorModel.anchorViewNum = [NSString stringWithFormat:@"%ld",19665 - i * 76];
-            anchorModel.abchorID = [NSString stringWithFormat:@"%ld",i];
+            UserModel *anchorModel = [[UserModel alloc] init];
+            anchorModel.userName = [NSString stringWithFormat:@"春暖花开%ld",i];
+            anchorModel.userIcon = [NSString stringWithFormat:@"icon%ld",i % 4];
+            anchorModel.userAddress = @"长春市南三环与幸福街交汇";
+            anchorModel.userViewNum = [NSString stringWithFormat:@"%ld",19665 - i * 76];
             
             [_source addObject:anchorModel];
         }
     }
     return _source;
+}
+
+- (PrivateMessageViewController *)messageVC {
+    if (!_messageVC) {
+        _messageVC = [[PrivateMessageViewController alloc] init];
+    }
+    return _messageVC;
+}
+
+#pragma mark - network data 
+
+- (void)loadData {
+    Network *network = [[Network alloc] init];
+    [network networkWithAction:@"getLiveingUser" params:@{} success:^(NSDictionary *data) {
+        
+        NSError *jsonError = nil;
+        PlayingUserListModel *model = [[PlayingUserListModel alloc] initWithDictionary:data error:&jsonError];
+        if (jsonError) {
+            return ;
+        }
+        if (model.users && model.users.count > 0) {
+            [self.source removeAllObjects];
+            [self.source addObjectsFromArray:model.users];
+            self.isNetwork = YES;
+            [self.collectionView reloadData];
+        } else {
+            _source = nil;
+            self.isNetwork = NO;
+            [self.collectionView reloadData];
+        }
+        
+    } failure:^(NSDictionary *data) {
+        NSString *message = nil;
+        NSInteger status = [data[@"status"] integerValue];
+        if (status == 500) {
+            message = @"连不上服务器，请检查您的网络";
+        } else {
+            message = @"获取失败，请稍后再试";
+        }
+        UIAlertView *alerView = [[UIAlertView alloc] initWithTitle:@"失败" message:message delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alerView show];
+    } view:self.navigationController.view];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -226,14 +276,14 @@ NSString* accessKeySecret = @"hipHJKpt0TdznQG2J4D0EVSavRH7mR";
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-//    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-    
-    // Configure the cell
     
     PlayCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
-    PlayAnchorModel *anchorModel = [self.source objectAtIndex:indexPath.row];
-    [cell setAnchorModel:anchorModel];
+    UserModel *model = [self.source objectAtIndex:indexPath.row];
+    model.userIcon = [NSString stringWithFormat:@"icon%ld",indexPath.row % 4];
+    model.userAddress = @"长春市南三环与幸福街交汇";
+    model.userViewNum = [NSString stringWithFormat:@"%ld",19665 - indexPath.row * 76];
+    cell.userModel = model;
     
     return cell;
 }
@@ -283,44 +333,23 @@ NSString* accessKeySecret = @"hipHJKpt0TdznQG2J4D0EVSavRH7mR";
 #pragma mark <UICollectionViewDelegate>
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PlayDetailViewController" bundle:nil];
-//    PlayDetailViewController *playDetailVC = [storyboard instantiateViewControllerWithIdentifier:@"PlayDetailViewController"];
-//    [self.navigationController pushViewController:playDetailVC animated:YES];
-    
+
+    UserModel *model = self.source[indexPath.row];
     
     TBMoiveViewController* currentView = [[TBMoiveViewController alloc] init];
     [currentView SetMoiveSource:[NSURL URLWithString:@"rtmp://live.lovcreate.com/app-name/video-name"]];
-    [self presentViewController:currentView animated:YES completion:nil ];
+//    [self presentViewController:currentView animated:YES completion:nil ];
+    currentView.hidesBottomBarWhenPushed = YES;
+    currentView.groupId = model.userGroupId;
+    currentView.userModel = model;
+    [self.navigationController pushViewController:currentView animated:YES];
 }
 
-/*
-// Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
+#pragma mark - Action
 
-/*
-// Uncomment this method to specify if the specified item should be selected
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
+- (IBAction)privateMessage:(UIBarButtonItem *)sender {
+    [self.navigationController pushViewController:self.messageVC animated:YES];
 }
-*/
-
-/*
-// Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
-}
-
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	return NO;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	
-}
-*/
 
 
 @end

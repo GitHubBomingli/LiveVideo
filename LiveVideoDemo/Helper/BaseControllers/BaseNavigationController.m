@@ -20,6 +20,23 @@
     
 }
 
+-(void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    if (self.childViewControllers.count > 0 ) {
+        UIButton *backBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+        [backBtn setImage:[[UIImage imageNamed:@"icon_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+        [backBtn setImageEdgeInsets:UIEdgeInsetsMake(8, 0, 8, 16)];
+        [backBtn addTarget:self action:@selector(pop) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backBtn];
+
+        viewController.navigationItem.leftBarButtonItem = backItem;
+    }
+    [super pushViewController:viewController animated:animated];
+}
+
+-(void)pop {
+    [super popViewControllerAnimated:YES];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

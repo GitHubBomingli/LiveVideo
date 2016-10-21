@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AnimationGiftListView : UIView<UIScrollViewDelegate>
+@interface AnimationGiftListView : UIView<UIScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+@property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 
-@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UIPageControl *pageC;
 @property (strong, nonatomic) IBOutlet UIButton *chongzhiBtn;
 @property (strong, nonatomic) IBOutlet UIButton *sendBtn;

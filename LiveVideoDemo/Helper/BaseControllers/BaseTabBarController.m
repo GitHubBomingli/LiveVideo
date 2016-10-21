@@ -22,7 +22,6 @@
     UITabBarItem* barItem = [UITabBarItem appearance];
     
     NSMutableDictionary* norDic = @{}.mutableCopy;
-    //    norDic[NSFontAttributeName] = [UIFont systemFontOfSize:14.f];
     norDic[NSForegroundColorAttributeName] = [UIColor lightGrayColor];
     [barItem setTitleTextAttributes:norDic forState:UIControlStateNormal];
     
@@ -30,6 +29,13 @@
     selDic[NSFontAttributeName] = norDic[NSFontAttributeName];
     selDic[NSForegroundColorAttributeName] = [UIColor whiteColor];
     [barItem setTitleTextAttributes:selDic forState:UIControlStateSelected];
+    
+    
+    self.tabBar.tintColor = [UIColor whiteColor];
+    
+    UITabBarItem *liveItem = self.tabBar.items[1];
+    liveItem.image = [[UIImage imageNamed:@"tab_Live"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    liveItem.selectedImage = [[UIImage imageNamed:@"tab_Live"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
 }
 
 - (void)didReceiveMemoryWarning {
